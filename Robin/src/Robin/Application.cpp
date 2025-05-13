@@ -1,7 +1,7 @@
 #include "Application.h"
 
-namespace Robin {
-
+namespace Robin 
+{
 	Application::Application()
 	{
 
@@ -12,7 +12,7 @@ namespace Robin {
 
 	}
 
-	void Application::Run()
+	void Application::run()
 	{
 		while (true);
 	}

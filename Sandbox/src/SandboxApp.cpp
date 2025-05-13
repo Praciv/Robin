@@ -14,7 +14,7 @@ public:
 	}
 };
 
-Robin::Application* Robin::Create_Application()
+Robin::Application* Robin::create_application()
 {
 	return new Sandbox();
 }

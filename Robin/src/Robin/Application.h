@@ -2,20 +2,20 @@
 
 #include "core.h"
 
-namespace Robin {
-
+namespace Robin 
+{
 	class __declspec(dllexport)Application
 	{
 	public:
 		Application();
 		virtual ~Application();
 
-		void Run();
+		void run();
 
 	private:
 	};
 
 	// To be defined in the client
-	Application* Create_Application();
+	Application* create_application();
 }
 

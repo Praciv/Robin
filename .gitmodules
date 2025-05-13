@@ -1,0 +1,3 @@
+[submodule "Robin/vendor/spdlog"]
+	path = Robin/vendor/spdlog
+	url = https://github.com/gabime/spdlog
