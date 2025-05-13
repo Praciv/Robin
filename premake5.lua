@@ -18,6 +18,9 @@ project "Robin"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "rbpch.h"
+	pchsource "Robin/src/rbpch.cpp"
+
 	files 
 	{
 		"%{prj.name}/src/**.h",
@@ -26,6 +29,7 @@ project "Robin"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
@@ -90,7 +94,7 @@ project "Sandbox"
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0"
+		systemversion "latest"
 
 		buildoptions 
 		{ 

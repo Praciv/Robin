@@ -4,6 +4,9 @@
     <Filter Include="Robin">
       <UniqueIdentifier>{5F66090E-CB7A-31BF-94FC-D41E00D02DF0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Robin\Events">
+      <UniqueIdentifier>{63519E7C-4FB4-2D21-F839-66D7E47BF9A3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Robin.h" />
@@ -16,9 +19,22 @@
     <ClInclude Include="src\Robin\EntryPoint.h">
       <Filter>Robin</Filter>
     </ClInclude>
+    <ClInclude Include="src\Robin\Events\ApplicationEvent.h">
+      <Filter>Robin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Events\Event.h">
+      <Filter>Robin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Events\KeyEvent.h">
+      <Filter>Robin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Events\MouseEvent.h">
+      <Filter>Robin\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Robin\Log.h">
       <Filter>Robin</Filter>
     </ClInclude>
+    <ClInclude Include="src\rbpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Robin\Application.cpp">
@@ -27,5 +43,6 @@
     <ClCompile Include="src\Robin\Log.cpp">
       <Filter>Robin</Filter>
     </ClCompile>
+    <ClCompile Include="src\rbpch.cpp" />
   </ItemGroup>
 </Project>
