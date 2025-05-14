@@ -1,14 +1,14 @@
 #include "rbpch.h"
-#include "Log.h"
+#include "log.h"
 
 #include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace Robin
 {
-	std::shared_ptr<spdlog::logger> Log::s_core_logger;
-	std::shared_ptr<spdlog::logger> Log::s_client_logger;
+	std::shared_ptr<spdlog::logger> log::s_core_logger;
+	std::shared_ptr<spdlog::logger> log::s_client_logger;
 
-	void Log::init()
+	void log::init()
 	{
 		spdlog::set_pattern("%^[%T] %n: %v%$");
 		s_core_logger = spdlog::stdout_color_mt("ROBIN");

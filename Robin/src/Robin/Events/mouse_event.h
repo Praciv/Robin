@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Event.h"
+#include "event.h"
 
 namespace Robin
 {
-	class ROBIN_API MouseMovedEvent : public Event
+	class ROBIN_API mouse_moved_event : public event
 	{
 	public:
-		MouseMovedEvent(float x, float y)
+		mouse_moved_event(float x, float y)
 			: m_mouse_x(x), m_mouse_y(y) {}
 
 		inline float get_x() const { return m_mouse_x; }
@@ -17,7 +17,7 @@ namespace Robin
 		std::string to_string() const override
 		{
 			std::stringstream ss;
-			ss << "MouseMovedEvent: " << get_x() << ", " << get_y();
+			ss << "mouse_moved_event: " << get_x() << ", " << get_y();
 			return ss.str();
 		}
 
@@ -27,10 +27,10 @@ namespace Robin
 		float m_mouse_x, m_mouse_y;
 	};
 
-	class ROBIN_API MouseScrolledEvent : public Event
+	class ROBIN_API mouse_scrolled_event : public event
 	{
 	public:
-		MouseScrolledEvent(float x_offset, float y_offset)
+		mouse_scrolled_event(float x_offset, float y_offset)
 			: m_x_offset(x_offset), m_y_offset(y_offset) {}
 
 		inline float get_x_offset() const { return m_x_offset; }
@@ -40,7 +40,7 @@ namespace Robin
 		std::string to_string() const override
 		{
 			std::stringstream ss;
-			ss << "MouseScrolledEvent: " << get_x_offset() << ", " << get_y_offset();
+			ss << "mouse_scrolled_event: " << get_x_offset() << ", " << get_y_offset();
 			return ss.str();
 		}
 
@@ -50,45 +50,45 @@ namespace Robin
 		float m_x_offset, m_y_offset;
 	};
 
-	class ROBIN_API MouseButtonEvent : public Event
+	class ROBIN_API mouse_button_event : public event
 	{
 	public:
 		inline float get_mouse_button() const { return m_button; }
 
 		EVENT_CLASS_CATEGORY(event_category_mouse | event_category_input)
 	protected:
-		MouseButtonEvent(int button)
+		mouse_button_event(int button)
 			: m_button(button) {}
 
 		int m_button;
 	};
 
-	class ROBIN_API MouseButtonPressedEvent : public MouseButtonEvent
+	class ROBIN_API mouse_button_pressed_event : public mouse_button_event
 	{
 	public:
-		MouseButtonPressedEvent(int button)
-			: MouseButtonEvent(button) {}
+		mouse_button_pressed_event(int button)
+			: mouse_button_event(button) {}
 
 		std::string to_string() const override
 		{
 			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << m_button;
+			ss << "mouse_button_pressed_event: " << m_button;
 			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(mouse_button_pressed)
 	};
 
-	class ROBIN_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class ROBIN_API mouse_button_released_event : public mouse_button_event
 	{
 	public:
-		MouseButtonReleasedEvent(int button)
-			: MouseButtonEvent(button) {}
+		mouse_button_released_event(int button)
+			: mouse_button_event(button) {}
 
 		std::string to_string() const override
 		{
 			std::stringstream ss;
-			ss << "MouseButtonReleasedEvent: " << m_button;
+			ss << "mouse_button_released_event: " << m_button;
 			return ss.str();
 		}
 

@@ -10,4 +10,12 @@
 	#error Robin only supports windows
 #endif 
 
+#ifdef RB_ENABLE_ASSERTS
+	#define RB_ASSERT(x, ...) { if(!(x)) { RB_ERROR("Assertion failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define RB_CORE_ASSERT(x, ...) { if(!(x)) { RB_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define RB_ASSERT(x, ...) 
+	#define RB_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1 << x)

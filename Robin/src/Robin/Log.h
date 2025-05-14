@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Core.h"
+#include "core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 
 namespace Robin 
 {
-	class ROBIN_API Log
+	class ROBIN_API log
 	{
 	public:
 		static void init();
@@ -21,15 +21,15 @@ namespace Robin
 }
 
 // core log macros
-#define RB_CORE_TRACE(...)   ::Robin::Log::get_core_logger()->trace(__VA_ARGS__)
-#define RB_CORE_INFO(...)    ::Robin::Log::get_core_logger()->info(__VA_ARGS__)
-#define RB_CORE_WARN(...)    ::Robin::Log::get_core_logger()->warn(__VA_ARGS__)
-#define RB_CORE_ERROR(...)   ::Robin::Log::get_core_logger()->error(__VA_ARGS__)
-#define RB_CORE_FATAL(...)   ::Robin::Log::get_core_logger()->fatal(__VA_ARGS__)
+#define RB_CORE_TRACE(...)   ::Robin::log::get_core_logger()->trace(__VA_ARGS__)
+#define RB_CORE_INFO(...)    ::Robin::log::get_core_logger()->info(__VA_ARGS__)
+#define RB_CORE_WARN(...)    ::Robin::log::get_core_logger()->warn(__VA_ARGS__)
+#define RB_CORE_ERROR(...)   ::Robin::log::get_core_logger()->error(__VA_ARGS__)
+#define RB_CORE_FATAL(...)   ::Robin::log::get_core_logger()->fatal(__VA_ARGS__)
 
 // client log macros
-#define RB_TRACE(...)       ::Robin::Log::get_client_logger()->trace(__VA_ARGS__)
-#define RB_INFO(...)        ::Robin::Log::get_client_logger()->info(__VA_ARGS__)
-#define RB_WARN(...)        ::Robin::Log::get_client_logger()->warn(__VA_ARGS__)
-#define RB_ERROR(...)       ::Robin::Log::get_client_logger()->error(__VA_ARGS__)
-#define RB_FATAL(...)       ::Robin::Log::get_client_logger()->fatal(__VA_ARGS__)
+#define RB_TRACE(...)       ::Robin::log::get_client_logger()->trace(__VA_ARGS__)
+#define RB_INFO(...)        ::Robin::log::get_client_logger()->info(__VA_ARGS__)
+#define RB_WARN(...)        ::Robin::log::get_client_logger()->warn(__VA_ARGS__)
+#define RB_ERROR(...)       ::Robin::log::get_client_logger()->error(__VA_ARGS__)
+#define RB_FATAL(...)       ::Robin::log::get_client_logger()->fatal(__VA_ARGS__)

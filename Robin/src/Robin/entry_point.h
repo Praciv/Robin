@@ -2,11 +2,11 @@
 
 #ifdef RB_PLATFORM_WINDOWS
 
-extern Robin::Application* Robin::create_application();
+extern Robin::application* Robin::create_application();
 
 int main(int argc, char** argv)
 {
-	Robin::Log::init();
+	Robin::log::init();
 
 	auto app = Robin::create_application();
 	app->run();

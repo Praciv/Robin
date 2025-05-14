@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Robin">
       <UniqueIdentifier>{5F66090E-CB7A-31BF-94FC-D41E00D02DF0}</UniqueIdentifier>
     </Filter>
@@ -9,38 +15,47 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\windows_window.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Robin.h" />
-    <ClInclude Include="src\Robin\Application.h">
+    <ClInclude Include="src\Robin\Events\application_event.h">
+      <Filter>Robin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Events\event.h">
+      <Filter>Robin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Events\key_event.h">
+      <Filter>Robin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Events\mouse_event.h">
+      <Filter>Robin\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\application.h">
       <Filter>Robin</Filter>
     </ClInclude>
-    <ClInclude Include="src\Robin\Core.h">
+    <ClInclude Include="src\Robin\core.h">
       <Filter>Robin</Filter>
     </ClInclude>
-    <ClInclude Include="src\Robin\EntryPoint.h">
+    <ClInclude Include="src\Robin\entry_point.h">
       <Filter>Robin</Filter>
     </ClInclude>
-    <ClInclude Include="src\Robin\Events\ApplicationEvent.h">
-      <Filter>Robin\Events</Filter>
+    <ClInclude Include="src\Robin\log.h">
+      <Filter>Robin</Filter>
     </ClInclude>
-    <ClInclude Include="src\Robin\Events\Event.h">
-      <Filter>Robin\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Events\KeyEvent.h">
-      <Filter>Robin\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Events\MouseEvent.h">
-      <Filter>Robin\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Log.h">
+    <ClInclude Include="src\Robin\window.h">
       <Filter>Robin</Filter>
     </ClInclude>
     <ClInclude Include="src\rbpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Robin\Application.cpp">
+    <ClCompile Include="src\Platform\Windows\windows_window.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\application.cpp">
       <Filter>Robin</Filter>
     </ClCompile>
-    <ClCompile Include="src\Robin\Log.cpp">
+    <ClCompile Include="src\Robin\log.cpp">
       <Filter>Robin</Filter>
     </ClCompile>
     <ClCompile Include="src\rbpch.cpp" />

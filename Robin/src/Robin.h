@@ -2,9 +2,9 @@
 
 // For use by Robin applications 
 
-#include "Robin/Application.h"
-#include "Robin/Log.h"
+#include "Robin/application.h"
+#include "Robin/log.h"
 
 // ------Entry point------
-#include "Robin/EntryPoint.h"
+#include "Robin/entry_point.h"
 // -----------------------
