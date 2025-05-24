@@ -20,6 +20,8 @@ namespace Robin
 		inline void set_event_callback(const event_callback_fn& callback) override { m_data.event_callback = callback; };
 		void set_vsync(bool enabled) override;
 		bool is_vsync() const override;
+
+		inline virtual void* get_native_window() const { return m_window; }
 	private:
 		virtual void init(const window_props& props);
 		virtual void shutdown();

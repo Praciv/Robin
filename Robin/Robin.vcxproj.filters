@@ -24,6 +24,9 @@
     <ClInclude Include="src\Platform\OpenGL\imgui_opengl_renderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\windows_input.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\windows_window.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -52,6 +55,9 @@
     <ClInclude Include="src\Robin\entry_point.h">
       <Filter>Robin</Filter>
     </ClInclude>
+    <ClInclude Include="src\Robin\input.h">
+      <Filter>Robin</Filter>
+    </ClInclude>
     <ClInclude Include="src\Robin\layer.h">
       <Filter>Robin</Filter>
     </ClInclude>
@@ -69,6 +75,9 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\imgui_opengl_renderer.cpp">
       <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\windows_input.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\windows_window.cpp">
       <Filter>Platform\Windows</Filter>
