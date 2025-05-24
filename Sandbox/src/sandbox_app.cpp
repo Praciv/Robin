@@ -9,12 +9,18 @@ public:
 
 	void on_update() override
 	{
-
+		if (Robin::input::is_key_pressed(RB_KEY_TAB))
+			RB_TRACE("Tab is pressed");
 	}
 
 	void on_event(Robin::event& event) override
 	{
+		if (event.get_event_type() == Robin::event_type::key_pressed)
+		{
+			Robin::key_pressed_event& e = (Robin::key_pressed_event&)event;
 
+			RB_TRACE("{0}", (char)e.get_key_code());
+		}
 	}
 };
 

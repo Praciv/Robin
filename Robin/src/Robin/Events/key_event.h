@@ -50,7 +50,7 @@ namespace Robin
 			return ss.str();
 		}
 
-		EVENT_CLASS_TYPE(key_pressed)
+		EVENT_CLASS_TYPE(key_released)
 	};
 
 	class ROBIN_API key_typed_event : public key_event

@@ -64,9 +64,6 @@ namespace Robin
 			for (layer* layer : m_layer_stack)
 				layer->on_update();
 
-			auto [x, y] = input::get_mouse_position();
-			RB_CORE_TRACE("{0}, {1}", x, y);
-
 			m_window->on_update();
 		}
 	}

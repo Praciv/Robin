@@ -149,8 +149,6 @@ namespace Robin
 
 	bool imgui_layer::on_key_typed_event(key_typed_event& e)
 	{
-		RB_TRACE(e);
-
 		ImGuiIO& io = ImGui::GetIO();
 		int key_code = e.get_key_code();
 		if (key_code > 0 && key_code < 0x10000)

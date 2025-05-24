@@ -7,3 +7,6 @@
 [submodule "Robin/vendor/imgui"]
 	path = Robin/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Robin/vendor/glm"]
+	path = Robin/vendor/glm
+	url = https://github.com/g-truc/glm
