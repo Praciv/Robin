@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef RB_PLATFORM_WINDOWS
+#ifdef RB_PLATFORM_WINDOWS 
 
 extern Robin::application* Robin::create_application();
 

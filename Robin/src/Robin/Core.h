@@ -10,6 +10,10 @@
 	#error Robin only supports windows
 #endif 
 
+#ifdef RB_DEBUG
+	#define RB_ENABLE_ASSERTS
+#endif
+
 #ifdef RB_ENABLE_ASSERTS
 	#define RB_ASSERT(x, ...) { if(!(x)) { RB_ERROR("Assertion failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define RB_CORE_ASSERT(x, ...) { if(!(x)) { RB_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__); __debugbreak(); } }
@@ -19,3 +23,5 @@
 #endif
 
 #define BIT(x) (1 << x)
+
+#define RB_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)

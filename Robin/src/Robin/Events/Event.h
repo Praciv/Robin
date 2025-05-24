@@ -14,7 +14,7 @@ namespace Robin
 		none = 0,
 		window_close, window_resize, window_focus, window_lost_focus, window_moved,
 		app_tick, app_update, app_render,
-		key_pressed, key_released, 
+		key_pressed, key_released, key_typed, 
 		mouse_button_pressed, mouse_button_released, mouse_moved, mouse_scrolled
 	};
 
@@ -39,6 +39,8 @@ namespace Robin
 	{
 		friend class event_dspatcher; 
 	public:
+		bool handled = false;
+
 		virtual event_type get_event_type() const = 0; 
 		virtual const char* get_name() const = 0;
 		virtual int get_category_flags() const = 0;
@@ -48,14 +50,6 @@ namespace Robin
 		{
 			return get_category_flags() & category;
 		}
-
-		inline void set_handled(bool handled)
-		{
-			m_handled = handled;
-		}
-
-	protected:
-		bool m_handled = false; 
 	};
 
 	class event_dispatcher
@@ -73,7 +67,8 @@ namespace Robin
 		{
 			if (m_event.get_event_type() == T::get_static_type())
 			{
-				m_event.set_handled(func(*(T*)&m_event));
+				m_event.handled = func(*(T*)&m_event);
+
 				return true; 
 			}
 			return false; 

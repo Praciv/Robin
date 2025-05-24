@@ -13,14 +13,19 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directiories relative to root folder
 IncludeDir = {}
 IncludeDir["GLFW"] = "Robin/vendor/GLFW/include"
+IncludeDir["GLAD"] = "Robin/vendor/GLAD/include"
+IncludeDir["ImGui"] = "Robin/vendor/imgui"
 
 include "Robin/vendor/GLFW"
+include "Robin/vendor/GLAD"
+include "Robin/vendor/imgui"
+
 
 project "Robin"
 	location "Robin"
 	kind "SharedLib"
 	language "C++"
-	staticruntime "on"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -38,30 +43,29 @@ project "Robin"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-	"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLAD}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
+		"GLAD",
+		"ImGui",
 		"opengl32.lib",
 		"dwmapi.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "10.0"
-
-		buildoptions 
-		{ 
-			"/utf-8" 
-		}
 
 		defines 
 		{
 			"RB_PLATFORM_WINDOWS",
-			"RB_BUILD_DLL"
+			"RB_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -72,20 +76,26 @@ project "Robin"
 	filter "configurations:Debug"
 		defines "RB_DEBUG"
 		symbols "On"
+		runtime "Debug"
+		buildoptions "/utf-8"
 
 	filter "configurations:Release"
 		defines "RB_RELEASE"
 		optimize "On"
+		runtime "Release"
+		buildoptions "/utf-8"
 
 	filter "configurations:Dist"
 		defines "RB_DIST"
 		optimize "On"
+		runtime "Release"
+		buildoptions "/utf-8"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "on"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -109,13 +119,7 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
-
-		buildoptions 
-		{ 
-			"/utf-8" 
-		}
 
 		defines 
 		{
@@ -125,11 +129,17 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "RB_DEBUG"
 		symbols "On"
+		runtime "Debug"
+		buildoptions "/utf-8"
 
 	filter "configurations:Release"
 		defines "RB_RELEASE"
 		optimize "On"
+		runtime "Release"
+		buildoptions "/utf-8"
 
 	filter "configurations:Dist"
 		defines "RB_DIST"
 		optimize "On" 
+		runtime "Release"
+		buildoptions "/utf-8"

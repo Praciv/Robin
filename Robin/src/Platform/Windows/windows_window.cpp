@@ -5,6 +5,8 @@
 #include "Robin/Events/key_event.h"
 #include "Robin/Events/mouse_event.h"
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 namespace Robin
 {
@@ -51,6 +53,8 @@ namespace Robin
 
 		m_window = glfwCreateWindow((int)props.width, (int)props.height, m_data.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		RB_CORE_ASSERT(status, "Failed to initialise Glad")
 		glfwSetWindowUserPointer(m_window, &m_data);
 		set_vsync(true);
 
@@ -99,6 +103,15 @@ namespace Robin
 				}
 			}
 		});
+
+		glfwSetCharCallback(m_window, [](GLFWwindow* window, unsigned int key_code)
+		{
+			window_data& data = *(window_data*)glfwGetWindowUserPointer(window);
+
+			key_typed_event event(key_code);
+			data.event_callback(event);
+		});
+
 
 		glfwSetMouseButtonCallback(m_window, [](GLFWwindow* window, int button, int action, int mods)
 		{

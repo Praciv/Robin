@@ -4,6 +4,9 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
@@ -13,8 +16,14 @@
     <Filter Include="Robin\Events">
       <UniqueIdentifier>{63519E7C-4FB4-2D21-F839-66D7E47BF9A3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Robin\ImGui">
+      <UniqueIdentifier>{C9E6E268-359C-5B5E-BE90-55352A455262}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\imgui_opengl_renderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\windows_window.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -31,6 +40,9 @@
     <ClInclude Include="src\Robin\Events\mouse_event.h">
       <Filter>Robin\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Robin\ImGui\imgui_layer.h">
+      <Filter>Robin\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Robin\application.h">
       <Filter>Robin</Filter>
     </ClInclude>
@@ -38,6 +50,12 @@
       <Filter>Robin</Filter>
     </ClInclude>
     <ClInclude Include="src\Robin\entry_point.h">
+      <Filter>Robin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\layer.h">
+      <Filter>Robin</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\layer_stack.h">
       <Filter>Robin</Filter>
     </ClInclude>
     <ClInclude Include="src\Robin\log.h">
@@ -49,10 +67,22 @@
     <ClInclude Include="src\rbpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\imgui_opengl_renderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\windows_window.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Robin\ImGui\imgui_layer.cpp">
+      <Filter>Robin\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Robin\application.cpp">
+      <Filter>Robin</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\layer.cpp">
+      <Filter>Robin</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\layer_stack.cpp">
       <Filter>Robin</Filter>
     </ClCompile>
     <ClCompile Include="src\Robin\log.cpp">

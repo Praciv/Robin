@@ -52,4 +52,20 @@ namespace Robin
 
 		EVENT_CLASS_TYPE(key_pressed)
 	};
+
+	class ROBIN_API key_typed_event : public key_event
+	{
+	public:
+		key_typed_event(int key_code)
+			: key_event(key_code) {}
+
+		std::string to_string() const override
+		{
+			std::stringstream ss;
+			ss << "key_typed_event: " << m_key_code;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(key_typed)
+	};
 }
