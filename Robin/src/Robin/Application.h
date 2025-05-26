@@ -7,6 +7,8 @@
 #include "Events/event.h"
 #include "Robin/Events/application_event.h"
 
+#include "Robin/ImGui/imgui_layer.h"
+
 namespace Robin 
 {
 	class ROBIN_API application
@@ -28,6 +30,7 @@ namespace Robin
 		bool on_window_close(window_close_event& e);
 
 		std::unique_ptr<window> m_window;
+		imgui_layer* m_imgui_layer;
 		bool m_running = true; 
 		layer_stack m_layer_stack; 
 	private:

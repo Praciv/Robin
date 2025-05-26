@@ -22,6 +22,6 @@ namespace Robin
 		std::vector<layer*>::iterator end() { return m_layers.end(); }
 	private:
 		std::vector<layer*> m_layers;
-		std::vector<layer*>::iterator m_layer_insert;
+		unsigned int m_layer_insert_index = 0;
 	};
 }

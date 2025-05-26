@@ -21,6 +21,9 @@ namespace Robin
 
 		m_window = std::unique_ptr<window>(window::create());
 		m_window->set_event_callback(BIND_EVENT_FN(on_event));
+
+		m_imgui_layer = new imgui_layer;
+		push_overlay(m_imgui_layer);
 	}
 
 	application::~application()
@@ -63,6 +66,11 @@ namespace Robin
 
 			for (layer* layer : m_layer_stack)
 				layer->on_update();
+
+			m_imgui_layer->begin();
+			for (layer* layer : m_layer_stack)
+				layer->on_imgui_render();
+			m_imgui_layer->end();
 
 			m_window->on_update();
 		}

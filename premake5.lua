@@ -115,7 +115,8 @@ project "Sandbox"
 	{
 		"Robin/vendor/spdlog/include",
 		"Robin/src",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"Robin/vendor"
 	}
 
 	links
