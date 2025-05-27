@@ -5,6 +5,8 @@
 #include "Robin/Events/key_event.h"
 #include "Robin/Events/mouse_event.h"
 
+#include "platform/OpenGL/opengl_context.h"
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -52,9 +54,10 @@ namespace Robin
 		}
 
 		m_window = glfwCreateWindow((int)props.width, (int)props.height, m_data.title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		RB_CORE_ASSERT(status, "Failed to initialise Glad")
+
+		m_context = new opengl_context(m_window);
+		m_context->init();
+		
 		glfwSetWindowUserPointer(m_window, &m_data);
 		set_vsync(true);
 
@@ -159,7 +162,7 @@ namespace Robin
 	void windows_window::on_update()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_window);
+		m_context->swap_buffers();
 	}
 
 	void windows_window::set_vsync(bool enabled)

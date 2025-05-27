@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Robin/log.h"
 
 #ifdef RB_PLATFORM_WINDOWS
 	#include <Windows.h>

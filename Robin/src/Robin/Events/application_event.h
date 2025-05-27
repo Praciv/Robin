@@ -7,7 +7,7 @@ namespace Robin
 	class ROBIN_API window_resize_event : public event
 	{
 	public:
-		window_resize_event(float width, float height)
+		window_resize_event(int width, int height)
 			: m_width(width), m_height(height) {}
 
 		inline unsigned int get_width() const { return m_width; }

@@ -1353,6 +1353,9 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\graphics_context.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_context.h" />
+    <ClInclude Include="src\Robin\Renderer\shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\windows_input.cpp">
@@ -1382,5 +1385,7 @@
     <ClCompile Include="src\rbpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\opengl_context.cpp" />
+    <ClCompile Include="src\Robin\Renderer\shader.cpp" />
   </ItemGroup>
 </Project>

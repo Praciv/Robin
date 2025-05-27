@@ -25,9 +25,10 @@ include "Robin/vendor/imgui"
 
 project "Robin"
 	location "Robin"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -41,6 +42,11 @@ project "Robin"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines 
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -63,7 +69,6 @@ project "Robin"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "10.0"
 
 		defines 
@@ -73,26 +78,21 @@ project "Robin"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("xcopy \"%{cfg.buildtarget.abspath}\" \"%{wks.location}/bin/" .. outputdir .. "/Sandbox/\" /Y /I /R /F")
-		}
-
 	filter "configurations:Debug"
 		defines "RB_DEBUG"
-		symbols "On"
+		symbols "on"
 		runtime "Debug"
 		buildoptions "/utf-8"
 
 	filter "configurations:Release"
 		defines "RB_RELEASE"
-		optimize "On"
+		optimize "on"
 		runtime "Release"
 		buildoptions "/utf-8"
 
 	filter "configurations:Dist"
 		defines "RB_DIST"
-		optimize "On"
+		optimize "on"
 		runtime "Release"
 		buildoptions "/utf-8"
 
@@ -100,7 +100,8 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -125,7 +126,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines 

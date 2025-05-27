@@ -53,7 +53,7 @@ namespace Robin
 	class ROBIN_API mouse_button_event : public event
 	{
 	public:
-		inline float get_mouse_button() const { return m_button; }
+		inline int get_mouse_button() const { return m_button; }
 
 		EVENT_CLASS_CATEGORY(event_category_mouse | event_category_input)
 	protected:

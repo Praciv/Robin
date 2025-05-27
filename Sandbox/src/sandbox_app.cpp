@@ -27,7 +27,6 @@ public:
 
 	void on_imgui_render() override
 	{
-		//ImGui::Begin("example");
 	}
 };
 
