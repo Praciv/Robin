@@ -4,16 +4,15 @@
 
 namespace Robin
 {
+
 	class shader
 	{
-	public: 
-		shader(const std::string& vertex_source, const std::string& fragment_source);
-		~shader();
+	public:
+		virtual ~shader() {}
 
-		void bind() const;
-		void unbind() const ;
+		virtual void bind() const = 0;
+		virtual void unbind() const = 0;
 
-	private:
-		uint32_t m_renderer_id;
+		static shader* create(const std::string& vertex_source, const std::string& fragment_source);
 	};
 }

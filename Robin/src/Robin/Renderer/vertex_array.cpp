@@ -1,14 +1,11 @@
 #include "rbpch.h"
-#include "shader.h"
+#include "vertex_array.h"
 
 #include "renderer.h"
 
-#include "Platform/OpenGL/opengl_shader.h"
-
-
 namespace Robin
 {
-	shader* shader::create(const std::string& vertex_source, const std::string& fragment_source)
+	vertex_array* vertex_array::create()
 	{
 		switch (renderer::get_renderer_api())
 		{
@@ -16,7 +13,7 @@ namespace Robin
 			RB_CORE_ASSERT(false, "renderer API: none not supported");
 			break;
 		case renderer_API::opengl:
-			return new opengl_shader(vertex_source, fragment_source);
+			//return new opengl_vertex_buffer(vertices, size);
 			break;
 		}
 

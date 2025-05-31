@@ -146,6 +146,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Robin\Renderer\shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_context.h" />
     <ClInclude Include="src\Platform\Windows\windows_input.h" />
     <ClInclude Include="src\Platform\Windows\windows_window.h" />
@@ -164,8 +166,10 @@
     <ClInclude Include="src\Robin\layer_stack.h" />
     <ClInclude Include="src\Robin\log.h" />
     <ClInclude Include="src\Robin\mouse_button_codes.h" />
+    <ClInclude Include="src\Robin\Renderer\buffer.h" />
     <ClInclude Include="src\Robin\Renderer\graphics_context.h" />
-    <ClInclude Include="src\Robin\Renderer\shader.h" />
+    <ClInclude Include="src\Robin\Renderer\renderer.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_shader.h" />
     <ClInclude Include="src\Robin\window.h" />
     <ClInclude Include="src\rbpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -588,6 +592,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Robin\Renderer\shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_context.cpp" />
     <ClCompile Include="src\Platform\Windows\windows_input.cpp" />
     <ClCompile Include="src\Platform\Windows\windows_window.cpp" />
@@ -600,7 +606,9 @@
     <ClCompile Include="src\rbpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Robin\Renderer\shader.cpp" />
+    <ClCompile Include="src\Robin\Renderer\buffer.cpp" />
+    <ClCompile Include="src\Robin\Renderer\renderer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\opengl_shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

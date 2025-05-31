@@ -28,9 +28,6 @@ namespace Robin
 		glGenVertexArrays(1, &m_vertex_array);
 		glBindVertexArray(m_vertex_array);
 
-		glGenBuffers(1, &m_vertex_buffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_vertex_buffer);
-
 		float vertices[] =
 		{
 			-0.5f, -0.5f, 0.0f, 
@@ -38,16 +35,14 @@ namespace Robin
 			0.0f, 0.5f, 0.0f
 		};
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		m_vertex_buffer.reset(vertex_buffer::create(vertices, sizeof(vertices)));
 
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 
-		glGenBuffers(1, &m_index_buffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_index_buffer);
-
 		unsigned int indices[] = {0, 1, 2};
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		
+		m_index_buffer.reset(index_buffer::create(indices, sizeof(indices)));
 
 		std::string vertex_source = R"(
 			#version 330 core
@@ -71,7 +66,7 @@ namespace Robin
 			}
 		)";
 
-		m_shader.reset(new shader(vertex_source, fragment_source));
+		m_shader.reset(shader::create(vertex_source, fragment_source));
 	}
 
 	application::~application()
