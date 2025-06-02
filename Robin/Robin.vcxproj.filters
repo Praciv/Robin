@@ -1360,6 +1360,8 @@
     <ClInclude Include="src\Platform\OpenGL\opengl_buffer.h" />
     <ClInclude Include="src\Robin\Renderer\renderer.h" />
     <ClInclude Include="src\Robin\Renderer\shader.h" />
+    <ClInclude Include="src\Robin\Renderer\vertex_array.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_vertex_array.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\windows_input.cpp">
@@ -1395,5 +1397,7 @@
     <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp" />
     <ClCompile Include="src\Robin\Renderer\renderer.cpp" />
     <ClCompile Include="src\Robin\Renderer\shader.cpp" />
+    <ClCompile Include="src\Robin\Renderer\vertex_array.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\opengl_vertex_array.cpp" />
   </ItemGroup>
 </Project>

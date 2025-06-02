@@ -25,32 +25,42 @@ namespace Robin
 		m_imgui_layer = new imgui_layer;
 		push_overlay(m_imgui_layer);
 
-		glGenVertexArrays(1, &m_vertex_array);
-		glBindVertexArray(m_vertex_array);
+		m_vertex_array.reset(vertex_array::create());
 
-		float vertices[] =
+		float vertices[3 * 7] =
 		{
-			-0.5f, -0.5f, 0.0f, 
-			0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f
+			-0.5f, -0.5f, 0.0f, 0.8f, 0.0f, 0.8f, 1.0f,
+			0.5f, -0.5f, 0.0f,  0.1f, 0.2f, 0.8f, 1.0f,
+			0.0f, 0.5f, 0.0f,   0.8f, 0.8f, 0.3f, 1.0f
 		};
-
+		
+		std::shared_ptr<vertex_buffer> m_vertex_buffer;
 		m_vertex_buffer.reset(vertex_buffer::create(vertices, sizeof(vertices)));
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		buffer_layout layout = {
+			{ shader_data_type::Float3, "a_position" },
+			{ shader_data_type::Float4, "a_colour" }
+		};
+		m_vertex_buffer->set_layout(layout);
+		m_vertex_array->add_vertex_buffer(m_vertex_buffer);
 
 		unsigned int indices[] = {0, 1, 2};
-		
+		std::shared_ptr<index_buffer> m_index_buffer;
 		m_index_buffer.reset(index_buffer::create(indices, sizeof(indices)));
+		m_vertex_array->set_index_buffer(m_index_buffer);
 
 		std::string vertex_source = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_position;
+			layout(location = 1) in vec4 a_colour;
 		
+			out vec3 v_position;
+			out vec4 v_colour;
+
 			void main()
 			{
+				v_position = a_position;
+				v_colour = a_colour;
 				gl_Position = vec4(a_position, 1.0);
 			}
 		)";
@@ -60,9 +70,13 @@ namespace Robin
 			
 			layout(location = 0) out vec4 frag_colour;
 		
+			in vec3 v_position;
+			in vec4 v_colour;
+
 			void main()
 			{
-				frag_colour = vec4(0.8, 0.2, 0.3, 1.0);
+				frag_colour = vec4(v_position * 0.5 + 0.5, 1.0);
+				frag_colour = v_colour;
 			}
 		)";
 
@@ -107,9 +121,10 @@ namespace Robin
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_shader->bind();
-			glBindVertexArray(m_vertex_array);
+			m_vertex_array->bind();
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
-			
+			m_vertex_array->unbind();
+
 			for (layer* layer : m_layer_stack)
 				layer->on_update();
 

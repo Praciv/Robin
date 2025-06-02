@@ -11,6 +11,7 @@
 
 #include "Robin/Renderer/shader.h"
 #include "Robin/Renderer/buffer.h"
+#include "Robin/Renderer/vertex_array.h"
 
 
 namespace Robin 
@@ -38,10 +39,9 @@ namespace Robin
 		bool m_running = true; 
 		layer_stack m_layer_stack; 
 
-		unsigned int m_vertex_array;
-		std::unique_ptr<shader> m_shader;
-		std::unique_ptr<vertex_buffer> m_vertex_buffer;
-		std::unique_ptr<index_buffer> m_index_buffer;
+		std::shared_ptr<shader> m_shader;
+		std::shared_ptr<vertex_array> m_vertex_array;
+	
 	private:
 		static application* s_instance;
 	};

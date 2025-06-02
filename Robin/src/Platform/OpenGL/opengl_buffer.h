@@ -10,11 +10,15 @@ namespace Robin
 		opengl_vertex_buffer(float* vertices, uint32_t size);
 		virtual ~opengl_vertex_buffer(); 
 
-		virtual void bind() const;
-		virtual void unbind() const;
+		virtual void bind() const override;
+		virtual void unbind() const override;
+
+		virtual const buffer_layout& get_layout() const override { return m_layout; };
+		virtual void set_layout(const buffer_layout& layout) override { m_layout = layout; };
 
 	private:
 		uint32_t m_renderer_id = 0;
+		buffer_layout m_layout;
 	};
 
 
