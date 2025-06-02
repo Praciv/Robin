@@ -123,6 +123,9 @@ namespace Robin
 		virtual void bind() const = 0;
 		virtual void unbind() const = 0;
 
+		virtual const uint32_t get_count() const = 0;
+
+
 		static index_buffer* create(uint32_t* indices, uint32_t size);
 	};
 }

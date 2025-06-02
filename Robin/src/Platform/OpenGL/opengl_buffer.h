@@ -35,7 +35,11 @@ namespace Robin
 		virtual void bind() const;
 		virtual void unbind() const;
 
+		const uint32_t get_count() const override { return m_count; };
+
+
 	private:
 		uint32_t m_renderer_id = 0;
+		uint32_t m_count = 0;
 	};
 }

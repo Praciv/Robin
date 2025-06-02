@@ -12,10 +12,10 @@ namespace Robin
 	{
 		switch (renderer::get_renderer_api())
 		{
-		case renderer_API::none: 
+		case renderer_api::api::none: 
 			RB_CORE_ASSERT(false, "renderer API: none not supported");
 			break;
-		case renderer_API::opengl:
+		case renderer_api::api::opengl:
 			return new opengl_vertex_buffer(vertices, size);
 			break;
 		}
@@ -29,10 +29,10 @@ namespace Robin
 	{
 		switch (renderer::get_renderer_api())
 		{
-		case renderer_API::none:
+		case renderer_api::api::none:
 			RB_CORE_ASSERT(false, "renderer API: none not supported");
 			break;
-		case renderer_API::opengl:
+		case renderer_api::api::opengl:
 			return new opengl_index_buffer(indices, size);
 			break;
 		}

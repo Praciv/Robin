@@ -4,6 +4,7 @@
 #include "Robin/log.h"
 
 #include <glad/glad.h>
+#include "Robin/Renderer/renderer.h"
 
 #include "input.h"
 
@@ -117,14 +118,16 @@ namespace Robin
 	{
 		while (m_running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			render_command::set_clear_colour({ 0.1f, 0.1f, 0.1f, 1 });
+			render_command::clear();
+
+			renderer::begin_scene();
 
 			m_shader->bind();
-			m_vertex_array->bind();
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
-			m_vertex_array->unbind();
-
+			renderer::submit(m_vertex_array);
+			
+			renderer::end_scene();
+			
 			for (layer* layer : m_layer_stack)
 				layer->on_update();
 

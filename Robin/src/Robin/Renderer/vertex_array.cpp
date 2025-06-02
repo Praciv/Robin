@@ -11,8 +11,8 @@ namespace Robin
 	{
 		switch (renderer::get_renderer_api())
 		{
-			case renderer_API::none: RB_CORE_ASSERT(false, "renderer API: none not supported");
-			case renderer_API::opengl: return new opengl_vertex_array();
+			case renderer_api::api::none: RB_CORE_ASSERT(false, "renderer API: none not supported"); 
+			case renderer_api::api::opengl: return new opengl_vertex_array();
 		}
 
 		RB_CORE_ASSERT(false, "Unknown renderer API");
