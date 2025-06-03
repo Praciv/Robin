@@ -3,6 +3,8 @@
 
 #include <glad/glad.h>
 
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Robin
 {
 	opengl_shader::opengl_shader(const std::string& vertex_source, const std::string& fragment_source)
@@ -92,4 +94,9 @@ namespace Robin
 	{
         glUseProgram(0);
 	}
+
+    void opengl_shader::set_mat4(const std::string& name, const glm::mat4& matrix) const
+    {
+        glUniformMatrix4fv(glGetUniformLocation(m_renderer_id, name.c_str()), 1, GL_FALSE,  glm::value_ptr(matrix));
+    }
 }

@@ -146,6 +146,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Robin\Core\timestep.h" />
+    <ClInclude Include="src\Robin\Renderer\camera.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_renderer_api.h" />
     <ClInclude Include="src\Robin\Renderer\renderer_api.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_vertex_array.h" />
@@ -597,6 +599,7 @@
     <ClInclude Include="src\Robin\Renderer\vertex_array.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Robin\Renderer\camera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_renderer_api.cpp" />
     <ClCompile Include="src\Robin\Renderer\renderer_api.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_vertex_array.cpp" />

@@ -3,9 +3,11 @@
 #include "Robin/core.h"
 #include "Robin/Events/event.h"
 
+#include "Robin/Core/timestep.h"
+
 namespace Robin
 {
-	class ROBIN_API layer
+	class layer
 	{
 	public: 
 		layer(const std::string& name = "layer");
@@ -13,7 +15,7 @@ namespace Robin
 
 		virtual void on_attach() {}
 		virtual void on_detach() {}
-		virtual void on_update() {}
+		virtual void on_update(timestep timestep) {}
 		virtual void on_imgui_render() {}
 		virtual void on_event(event& event) {}
 

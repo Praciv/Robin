@@ -9,10 +9,7 @@
 
 #include "Robin/ImGui/imgui_layer.h"
 
-#include "Robin/Renderer/shader.h"
-#include "Robin/Renderer/buffer.h"
-#include "Robin/Renderer/vertex_array.h"
-
+#include "Robin/Core/timestep.h"
 
 namespace Robin 
 {
@@ -33,15 +30,13 @@ namespace Robin
 		inline window& get_window() { return *m_window; }
 	private:
 		bool on_window_close(window_close_event& e);
-
+	private:
 		std::unique_ptr<window> m_window;
 		imgui_layer* m_imgui_layer;
 		bool m_running = true; 
 		layer_stack m_layer_stack; 
 
-		std::shared_ptr<shader> m_shader;
-		std::shared_ptr<vertex_array> m_vertex_array;
-	
+		timestep m_last_frame_time; 
 	private:
 		static application* s_instance;
 	};

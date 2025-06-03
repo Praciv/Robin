@@ -11,7 +11,9 @@ namespace Robin
 		~opengl_shader();
 
 		void bind() const;
-		void unbind()const ;
+		void unbind()const;
+
+		void set_mat4(const std::string& name, const glm::mat4& matrix) const;
 
 	private:
 		uint32_t m_renderer_id;
