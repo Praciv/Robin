@@ -95,8 +95,23 @@ namespace Robin
         glUseProgram(0);
 	}
 
+    void opengl_shader::set_int(const std::string& name, const int value) const
+    {
+        glUniform1i(glGetUniformLocation(m_renderer_id, name.c_str()), value);
+    }
+
+    void opengl_shader::set_float3(const std::string& name, const glm::vec3& vector) const
+    {
+        glUniform3f(glGetUniformLocation(m_renderer_id, name.c_str()), vector.x, vector.y, vector.z);
+    }
+
+    void opengl_shader::set_float4(const std::string& name, const glm::vec4& vector) const
+    {
+        glUniform4f(glGetUniformLocation(m_renderer_id, name.c_str()), vector.x, vector.y, vector.z, vector.w);
+    }
+
     void opengl_shader::set_mat4(const std::string& name, const glm::mat4& matrix) const
     {
-        glUniformMatrix4fv(glGetUniformLocation(m_renderer_id, name.c_str()), 1, GL_FALSE,  glm::value_ptr(matrix));
+        glUniformMatrix4fv(glGetUniformLocation(m_renderer_id, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
     }
 }

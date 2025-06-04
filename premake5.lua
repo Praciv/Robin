@@ -16,7 +16,7 @@ IncludeDir["GLFW"] = "Robin/vendor/GLFW/include"
 IncludeDir["GLAD"] = "Robin/vendor/GLAD/include"
 IncludeDir["ImGui"] = "Robin/vendor/imgui"
 IncludeDir["glm"] = "Robin/vendor/glm"
-
+IncludeDir["stb_image"] = "Robin/vendor/stb_image"
 
 include "Robin/vendor/GLFW"
 include "Robin/vendor/GLAD"
@@ -40,6 +40,8 @@ project "Robin"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -56,7 +58,8 @@ project "Robin"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}",
 	}
 
 	links

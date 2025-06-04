@@ -13,7 +13,7 @@
 
 namespace Robin 
 {
-	class ROBIN_API application
+	class application
 	{
 	public:
 		application();
@@ -31,7 +31,7 @@ namespace Robin
 	private:
 		bool on_window_close(window_close_event& e);
 	private:
-		std::unique_ptr<window> m_window;
+		scope<window> m_window;
 		imgui_layer* m_imgui_layer;
 		bool m_running = true; 
 		layer_stack m_layer_stack; 

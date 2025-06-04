@@ -46,7 +46,7 @@ namespace Robin
 		glBindVertexArray(0);
 	}
 
-	void opengl_vertex_array::add_vertex_buffer(const std::shared_ptr<vertex_buffer>& vertex_buffer) 
+	void opengl_vertex_array::add_vertex_buffer(const ref<vertex_buffer>& vertex_buffer) 
 	{
 		RB_CORE_ASSERT(vertex_buffer->get_layout().get_elements().size(), "vertex buffer has no layout");
 
@@ -70,7 +70,7 @@ namespace Robin
 		m_vertex_buffers.push_back(vertex_buffer);
 	}
 
-	void opengl_vertex_array::set_index_buffer(const std::shared_ptr<index_buffer>&index_buffer) 
+	void opengl_vertex_array::set_index_buffer(const ref<index_buffer>&index_buffer) 
 	{
 		glBindVertexArray(m_renderer_id);
 		index_buffer->bind();

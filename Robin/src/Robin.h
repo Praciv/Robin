@@ -21,6 +21,8 @@
 #include "Robin/Renderer/buffer.h"
 #include "Robin/Renderer/shader.h"
 #include "Robin/Renderer/vertex_array.h"
+#include "Robin/Renderer/texture.h"
+
 
 #include "Robin/Renderer/camera.h"
 // ---------------------------------------

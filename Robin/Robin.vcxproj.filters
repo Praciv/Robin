@@ -7,17 +7,26 @@
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Robin">
       <UniqueIdentifier>{B674C6B3-22DF-7A2A-6B1D-2CD0D7C6587F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Robin\Core">
+      <UniqueIdentifier>{CEFAF241-BAC8-E647-A35C-576E8FC9C2AC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Robin\Events">
       <UniqueIdentifier>{DAF7BE8F-C6F0-DDE1-EF22-C366DB7ABDED}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Robin\ImGui">
       <UniqueIdentifier>{601ABD80-CCA5-2A45-D5B6-AD3941C18645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Robin\Renderer">
+      <UniqueIdentifier>{1C655772-0849-18C8-71A9-121B5DAC024A}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -40,8 +49,29 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\opengl_buffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\opengl_context.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\opengl_renderer_api.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\opengl_shader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\opengl_texture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\opengl_vertex_array.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\windows_input.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -50,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="src\Robin.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\timestep.h">
+      <Filter>src\Robin\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Robin\Events\application_event.h">
       <Filter>src\Robin\Events</Filter>
@@ -65,6 +98,33 @@
     </ClInclude>
     <ClInclude Include="src\Robin\ImGui\imgui_layer.h">
       <Filter>src\Robin\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\buffer.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\camera.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\graphics_context.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\render_command.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\renderer.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\renderer_api.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\shader.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\texture.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\vertex_array.h">
+      <Filter>src\Robin\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Robin\application.h">
       <Filter>src\Robin</Filter>
@@ -1353,22 +1413,29 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Robin\Renderer\graphics_context.h" />
-    <ClInclude Include="src\Platform\OpenGL\opengl_context.h" />
-    <ClInclude Include="src\Platform\OpenGL\opengl_shader.h" />
-    <ClInclude Include="src\Robin\Renderer\buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\opengl_buffer.h" />
-    <ClInclude Include="src\Robin\Renderer\renderer.h" />
-    <ClInclude Include="src\Robin\Renderer\shader.h" />
-    <ClInclude Include="src\Robin\Renderer\vertex_array.h" />
-    <ClInclude Include="src\Platform\OpenGL\opengl_vertex_array.h" />
-    <ClInclude Include="src\Robin\Renderer\renderer_api.h" />
-    <ClInclude Include="src\Robin\Renderer\render_command.h" />
-    <ClInclude Include="src\Platform\OpenGL\opengl_renderer_api.h" />
-    <ClInclude Include="src\Robin\Renderer\camera.h" />
-    <ClInclude Include="src\Robin\Core\timestep.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\opengl_context.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\opengl_renderer_api.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\opengl_shader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\opengl_texture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\opengl_vertex_array.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\windows_input.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1380,6 +1447,30 @@
     </ClCompile>
     <ClCompile Include="src\Robin\ImGui\imgui_layer.cpp">
       <Filter>src\Robin\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\buffer.cpp">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\camera.cpp">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\render_command.cpp">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\renderer.cpp">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\renderer_api.cpp">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\shader.cpp">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\texture.cpp">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\vertex_array.cpp">
+      <Filter>src\Robin\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Robin\application.cpp">
       <Filter>src\Robin</Filter>
@@ -1396,17 +1487,8 @@
     <ClCompile Include="src\rbpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\opengl_context.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\opengl_shader.cpp" />
-    <ClCompile Include="src\Robin\Renderer\buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp" />
-    <ClCompile Include="src\Robin\Renderer\renderer.cpp" />
-    <ClCompile Include="src\Robin\Renderer\shader.cpp" />
-    <ClCompile Include="src\Robin\Renderer\vertex_array.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\opengl_vertex_array.cpp" />
-    <ClCompile Include="src\Robin\Renderer\renderer_api.cpp" />
-    <ClCompile Include="src\Robin\Renderer\render_command.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\opengl_renderer_api.cpp" />
-    <ClCompile Include="src\Robin\Renderer\camera.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

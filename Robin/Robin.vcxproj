@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>rbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RB_PLATFORM_WINDOWS;RB_BUILD_DLL;GLFW_INCLUDE_NONE;RB_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -99,7 +99,7 @@
       <PrecompiledHeaderFile>rbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RB_PLATFORM_WINDOWS;RB_BUILD_DLL;GLFW_INCLUDE_NONE;RB_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -125,7 +125,7 @@
       <PrecompiledHeaderFile>rbpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RB_PLATFORM_WINDOWS;RB_BUILD_DLL;GLFW_INCLUDE_NONE;RB_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -146,23 +146,30 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Robin\Core\timestep.h" />
-    <ClInclude Include="src\Robin\Renderer\camera.h" />
-    <ClInclude Include="src\Platform\OpenGL\opengl_renderer_api.h" />
-    <ClInclude Include="src\Robin\Renderer\renderer_api.h" />
-    <ClInclude Include="src\Platform\OpenGL\opengl_vertex_array.h" />
-    <ClInclude Include="src\Robin\Renderer\render_command.h" />
-    <ClInclude Include="src\Robin\Renderer\shader.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_context.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_renderer_api.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_texture.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_vertex_array.h" />
     <ClInclude Include="src\Platform\Windows\windows_input.h" />
     <ClInclude Include="src\Platform\Windows\windows_window.h" />
     <ClInclude Include="src\Robin.h" />
+    <ClInclude Include="src\Robin\Core\timestep.h" />
     <ClInclude Include="src\Robin\Events\application_event.h" />
     <ClInclude Include="src\Robin\Events\event.h" />
     <ClInclude Include="src\Robin\Events\key_event.h" />
     <ClInclude Include="src\Robin\Events\mouse_event.h" />
     <ClInclude Include="src\Robin\ImGui\imgui_layer.h" />
+    <ClInclude Include="src\Robin\Renderer\buffer.h" />
+    <ClInclude Include="src\Robin\Renderer\camera.h" />
+    <ClInclude Include="src\Robin\Renderer\graphics_context.h" />
+    <ClInclude Include="src\Robin\Renderer\render_command.h" />
+    <ClInclude Include="src\Robin\Renderer\renderer.h" />
+    <ClInclude Include="src\Robin\Renderer\renderer_api.h" />
+    <ClInclude Include="src\Robin\Renderer\shader.h" />
+    <ClInclude Include="src\Robin\Renderer\texture.h" />
+    <ClInclude Include="src\Robin\Renderer\vertex_array.h" />
     <ClInclude Include="src\Robin\application.h" />
     <ClInclude Include="src\Robin\core.h" />
     <ClInclude Include="src\Robin\entry_point.h" />
@@ -172,10 +179,6 @@
     <ClInclude Include="src\Robin\layer_stack.h" />
     <ClInclude Include="src\Robin\log.h" />
     <ClInclude Include="src\Robin\mouse_button_codes.h" />
-    <ClInclude Include="src\Robin\Renderer\buffer.h" />
-    <ClInclude Include="src\Robin\Renderer\graphics_context.h" />
-    <ClInclude Include="src\Robin\Renderer\renderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\opengl_shader.h" />
     <ClInclude Include="src\Robin\window.h" />
     <ClInclude Include="src\rbpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -596,21 +599,27 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
-    <ClInclude Include="src\Robin\Renderer\vertex_array.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Robin\Renderer\camera.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\opengl_renderer_api.cpp" />
-    <ClCompile Include="src\Robin\Renderer\renderer_api.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\opengl_vertex_array.cpp" />
-    <ClCompile Include="src\Robin\Renderer\render_command.cpp" />
-    <ClCompile Include="src\Robin\Renderer\shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_context.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\opengl_renderer_api.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\opengl_shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\opengl_texture.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\opengl_vertex_array.cpp" />
     <ClCompile Include="src\Platform\Windows\windows_input.cpp" />
     <ClCompile Include="src\Platform\Windows\windows_window.cpp" />
     <ClCompile Include="src\Robin\ImGui\imgui_build.cpp" />
     <ClCompile Include="src\Robin\ImGui\imgui_layer.cpp" />
+    <ClCompile Include="src\Robin\Renderer\buffer.cpp" />
+    <ClCompile Include="src\Robin\Renderer\camera.cpp" />
+    <ClCompile Include="src\Robin\Renderer\render_command.cpp" />
+    <ClCompile Include="src\Robin\Renderer\renderer.cpp" />
+    <ClCompile Include="src\Robin\Renderer\renderer_api.cpp" />
+    <ClCompile Include="src\Robin\Renderer\shader.cpp" />
+    <ClCompile Include="src\Robin\Renderer\texture.cpp" />
+    <ClCompile Include="src\Robin\Renderer\vertex_array.cpp" />
     <ClCompile Include="src\Robin\application.cpp" />
     <ClCompile Include="src\Robin\layer.cpp" />
     <ClCompile Include="src\Robin\layer_stack.cpp" />
@@ -618,10 +627,7 @@
     <ClCompile Include="src\rbpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Robin\Renderer\buffer.cpp" />
-    <ClCompile Include="src\Robin\Renderer\renderer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\opengl_shader.cpp" />
-    <ClCompile Include="src\Robin\Renderer\vertex_array.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

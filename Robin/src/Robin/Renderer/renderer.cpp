@@ -13,7 +13,7 @@ namespace Robin
 	{
 
 	}
-	void renderer::submit(const std::shared_ptr<shader>& shader, const std::shared_ptr<vertex_array>& vertex_array, const glm::mat4& transform)
+	void renderer::submit(const ref<shader>& shader, const ref<vertex_array>& vertex_array, const glm::mat4& transform)
 	{
 		shader->bind();
 		shader->set_mat4("u_view_projection_matrix", m_scene_data->view_projection_matrix);

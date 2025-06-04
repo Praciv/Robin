@@ -9,6 +9,6 @@ namespace Robin
 		void set_clear_colour(const glm::vec4& colour) override;
 		void clear() override;
 
-		void draw_indexed(const std::shared_ptr<vertex_array>& vertex_array) override;
+		void draw_indexed(const ref<vertex_array>& vertex_array) override;
 	};
 }
