@@ -7,6 +7,11 @@ namespace Robin
 	class render_command
 	{
 	public:
+		inline static void init()
+		{
+			s_renderer_api->init();
+		}
+
 		inline static void set_clear_colour(const glm::vec4& colour)
 		{
 			s_renderer_api->set_clear_colour(colour);

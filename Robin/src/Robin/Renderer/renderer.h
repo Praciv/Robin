@@ -9,6 +9,8 @@ namespace Robin
 	class renderer
 	{
 	public:
+		static void init();
+		
 		static void begin_scene(othorgraphic_camera& camera);
 		static void end_scene();
 

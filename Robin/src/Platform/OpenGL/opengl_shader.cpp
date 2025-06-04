@@ -1,64 +1,135 @@
 #include "rbpch.h"
 #include "opengl_shader.h"
 
-#include <glad/glad.h>
-
 #include <glm/gtc/type_ptr.hpp>
 
 namespace Robin
 {
-	opengl_shader::opengl_shader(const std::string& vertex_source, const std::string& fragment_source)
+    static GLenum shader_type_from_string(const std::string& type)
+    {
+        if (type == "vertex")
+            return GL_VERTEX_SHADER;
+        if (type == "fragment" || type == "pixel")
+            return GL_FRAGMENT_SHADER;
+
+        RB_CORE_ASSERT(false, "Unknown shader type");
+        return 0;
+    }
+
+    opengl_shader::opengl_shader(const std::string& file_path)
+    {
+        std::string source = read_file(file_path);
+        auto shader_sources = pre_process(source);
+
+        compile(shader_sources); 
+    }
+
+    opengl_shader::opengl_shader(const std::string& vertex_source, const std::string& fragment_source)
 	{
-        unsigned int vertex = glCreateShader(GL_VERTEX_SHADER);
-        const GLchar* source = vertex_source.c_str();
-        glShaderSource(vertex, 1, &source, NULL);
-        glCompileShader(vertex);
+        std::unordered_map<GLenum, std::string> sources;
 
-        // print compile errors if any
-        GLint success;
-        glGetShaderiv(GL_VERTEX_SHADER, GL_COMPILE_STATUS, &success);
+        sources[GL_VERTEX_SHADER] = vertex_source;
+        sources[GL_FRAGMENT_SHADER] = fragment_source;
 
-        if (success == GL_FALSE)
+        compile(sources);
+    }
+
+    opengl_shader::~opengl_shader()
+	{
+        glDeleteProgram(m_renderer_id);
+	}
+
+    std::string opengl_shader::read_file(const std::string& file_path)
+    {
+        std::string result;
+        std::ifstream in(file_path, std::ios::in, std::ios::binary);
+
+        if (in)
         {
-            GLint max_length = 0; 
-            glGetShaderiv(vertex, GL_INFO_LOG_LENGTH, &max_length);
-
-            std::vector<GLchar> info_log(max_length);
-            glGetShaderInfoLog(vertex, max_length, &max_length, &info_log[0]);
-
-            glDeleteShader(vertex);
-
-            RB_CORE_ERROR("{0}", info_log.data());
-            RB_CORE_ASSERT(false, "vertex shader compile error");
+            in.seekg(0, std::ios::end);
+            result.resize(in.tellg());
+            in.seekg(0, std::ios::beg);
+            in.read(&result[0], result.size());
+            in.close();
+        }
+        else
+        {
+            RB_CORE_ERROR("Could not open file: '{0}'", file_path);
         }
 
-        unsigned int fragment = glCreateShader(GL_FRAGMENT_SHADER);
-        source = fragment_source.c_str();
-        glShaderSource(fragment, 1, &source, NULL);
-        glCompileShader(fragment);
+        return result;
+    }
 
-        glGetShaderiv(GL_FRAGMENT_SHADER, GL_COMPILE_STATUS, &success);
+    std::unordered_map<GLenum, std::string> opengl_shader::pre_process(const std::string& source)
+    {
+        std::unordered_map<GLenum, std::string> shader_sources; 
 
-        if (success == GL_FALSE)
+        const char* type_token = "#type";
+        size_t type_token_length = strlen(type_token);
+        size_t pos = source.find(type_token, 0);
+
+        while (pos != std::string::npos)
         {
-            GLint max_length = 0;
-            glGetShaderiv(fragment, GL_INFO_LOG_LENGTH, &max_length);
+            size_t eol = source.find_first_of("\r\n", pos);
+            RB_CORE_ASSERT(eol != std::string::npos, "Syntax error");
 
-            std::vector<GLchar> info_log(max_length);
-            glGetShaderInfoLog(vertex, max_length, &max_length, &info_log[0]);
+            size_t begin = pos + type_token_length + 1; 
+            std::string type = source.substr(begin, eol - begin);
+            RB_CORE_ASSERT(shader_type_from_string(type), "invalid shader type specified");
 
-            glDeleteShader(vertex);
-            glDeleteShader(fragment);
-
-            RB_CORE_ERROR("{0}", info_log.data());
-            RB_CORE_ASSERT(false, "fragment shader compile error");
+            size_t next_line_pos = source.find_first_not_of("\r\n", eol);
+            pos = source.find(type_token, next_line_pos);
+            shader_sources[shader_type_from_string(type)] = 
+                source.substr(next_line_pos, 
+                    pos - (next_line_pos == std::string::npos ? source.size() - 1 : next_line_pos));
         }
 
+        return shader_sources;
+    }
+
+    void opengl_shader::compile(const std::unordered_map<GLenum, std::string>& shader_sources)
+    {
         m_renderer_id = glCreateProgram();
-        glAttachShader(m_renderer_id, vertex);
-        glAttachShader(m_renderer_id, fragment);
-        glLinkProgram(m_renderer_id);
 
+        std::vector<GLenum> shader_ids(shader_sources.size());
+
+        GLint success;
+
+        for (auto& kv : shader_sources)
+        {
+            GLenum type = kv.first;
+            const std::string& source = kv.second;
+
+            GLuint shader = glCreateShader(type);
+
+            const GLchar* source_cstr = source.c_str();
+            glShaderSource(shader, 1, &source_cstr, NULL);
+            glCompileShader(shader);
+
+            // print compile errors if any
+            glGetShaderiv(type, GL_COMPILE_STATUS, &success);
+
+            if (success == GL_FALSE)
+            {
+                GLint max_length = 0;
+                glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &max_length);
+
+                std::vector<GLchar> info_log(max_length);
+                glGetShaderInfoLog(shader, max_length, &max_length, &info_log[0]);
+
+                glDeleteShader(shader);
+
+                RB_CORE_ERROR("{0}", info_log.data());
+                RB_CORE_ASSERT(false, "Shader compile error");
+                break;
+            }
+
+            glAttachShader(m_renderer_id, shader);
+            shader_ids.push_back(shader);
+        }
+
+        glLinkProgram(m_renderer_id);
+        
         glGetProgramiv(m_renderer_id, GL_COMPILE_STATUS, &success);
 
         if (success == GL_FALSE)
@@ -69,21 +140,16 @@ namespace Robin
             std::vector<GLchar> info_log(max_length);
             glGetProgramInfoLog(m_renderer_id, max_length, &max_length, &info_log[0]);
 
-            glDeleteShader(vertex);
-            glDeleteShader(fragment);
+            for (auto id : shader_ids)
+                glDeleteShader(id);
 
             RB_CORE_ERROR("{0}", info_log.data());
             RB_CORE_ASSERT(false, "fragment shader compile error");
         }
 
-        glDetachShader(m_renderer_id, vertex);
-        glDetachShader(m_renderer_id, fragment);
+        for (auto id : shader_ids)
+            glDetachShader(m_renderer_id, id);
     }
-
-    opengl_shader::~opengl_shader()
-	{
-        glDeleteProgram(m_renderer_id);
-	}
 
 	void opengl_shader::bind() const
 	{

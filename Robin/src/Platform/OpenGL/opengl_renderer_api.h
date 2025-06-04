@@ -6,6 +6,8 @@ namespace Robin
 {
 	class opengl_renderer_api : public renderer_api
 	{
+		void init() override;
+
 		void set_clear_colour(const glm::vec4& colour) override;
 		void clear() override;
 

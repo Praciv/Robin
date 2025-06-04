@@ -15,6 +15,8 @@ namespace Robin
 		};
 
 	public:
+		virtual void init() = 0;
+
 		virtual void set_clear_colour(const glm::vec4& colour) = 0;
 		virtual void clear() = 0;
 

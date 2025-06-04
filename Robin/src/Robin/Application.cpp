@@ -3,6 +3,8 @@
 
 #include "Robin/log.h"
 
+#include "Robin/Renderer/renderer.h"
+
 #include "input.h"
 
 #include <GLFW/glfw3.h>
@@ -23,10 +25,10 @@ namespace Robin
 		m_window = std::unique_ptr<window>(window::create());
 		m_window->set_event_callback(BIND_EVENT_FN(on_event));
 
+		renderer::init();
+		
 		m_imgui_layer = new imgui_layer;
 		push_overlay(m_imgui_layer);
-
-		
 	}
 
 	application::~application()
