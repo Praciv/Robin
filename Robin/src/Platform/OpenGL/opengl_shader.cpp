@@ -22,6 +22,13 @@ namespace Robin
         auto shader_sources = pre_process(source);
 
         compile(shader_sources); 
+
+        auto last_slash = file_path.find_last_of("/\\");
+        last_slash = last_slash == std::string::npos ? 0 : last_slash + 1;
+
+        auto last_dot = file_path.rfind('.');
+        auto count = last_dot == std::string::npos ? file_path.size() - last_slash : last_dot - last_slash;
+        m_name = file_path.substr(last_slash, count);
     }
 
     opengl_shader::opengl_shader(const std::string& vertex_source, const std::string& fragment_source)
@@ -42,7 +49,7 @@ namespace Robin
     std::string opengl_shader::read_file(const std::string& file_path)
     {
         std::string result;
-        std::ifstream in(file_path, std::ios::in, std::ios::binary);
+        std::ifstream in(file_path, std::ios::in | std::ios::binary);
 
         if (in)
         {
@@ -91,10 +98,11 @@ namespace Robin
     {
         m_renderer_id = glCreateProgram();
 
-        std::vector<GLenum> shader_ids(shader_sources.size());
+        RB_CORE_ASSERT(shader_sources.size() <= 2, "Only supporting 2 shaders for now");
+        std::array<GLenum, 2> shader_ids;
+        int shade_id_index = 0;
 
         GLint success;
-
         for (auto& kv : shader_sources)
         {
             GLenum type = kv.first;
@@ -125,7 +133,7 @@ namespace Robin
             }
 
             glAttachShader(m_renderer_id, shader);
-            shader_ids.push_back(shader);
+            shader_ids[shade_id_index++] = shader;
         }
 
         glLinkProgram(m_renderer_id);

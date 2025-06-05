@@ -8,7 +8,7 @@
 
 namespace Robin
 {
-	class ROBIN_API imgui_layer : public layer
+	class imgui_layer : public layer
 	{
 	public:
 		imgui_layer();

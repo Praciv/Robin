@@ -22,6 +22,11 @@ namespace Robin
 			s_renderer_api->clear();
 		}
 
+		inline static void set_mouse_visibility(bool is_visible)
+		{
+			s_renderer_api->set_mouse_visibility(is_visible);
+		}
+
 		inline static void draw_indexed(const ref<vertex_array>& vertex_array)
 		{
 			s_renderer_api->draw_indexed(vertex_array);

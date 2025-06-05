@@ -22,13 +22,10 @@ namespace Robin
 		RB_CORE_INFO("  Vendor: {0}", (const char*)glGetString(GL_VENDOR));
 		RB_CORE_INFO("  Renderer: {0}", (const char*)glGetString(GL_RENDERER));
 		RB_CORE_INFO("  Version: {0}", (const char*)glGetString(GL_VERSION));
-
-
 	}
 
 	void opengl_context::swap_buffers()
 	{
 		glfwSwapBuffers(m_window_handle);
-
 	}
 }

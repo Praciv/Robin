@@ -81,6 +81,11 @@ namespace Robin
 		}
 	}
 
+	void application::close()
+	{
+		m_running = false;
+	}
+
 	bool application::on_window_close(window_close_event& e)
 	{
 		m_running = false; 

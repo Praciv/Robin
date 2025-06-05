@@ -11,7 +11,7 @@ namespace Robin
 	public:
 		static void init();
 		
-		static void begin_scene(othorgraphic_camera& camera);
+		static void begin_scene(perspective_camera& camera);
 		static void end_scene();
 
 		static void submit(const ref<shader>& shader, const ref<vertex_array>& vertex_array, const glm::mat4& transform);

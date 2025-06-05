@@ -10,7 +10,7 @@ namespace Robin
 		render_command::init();
 	}
 
-	void renderer::begin_scene(othorgraphic_camera& camera)
+	void renderer::begin_scene(perspective_camera& camera)
 	{
 		m_scene_data->view_projection_matrix = camera.get_view_projection_matrix();
 	}

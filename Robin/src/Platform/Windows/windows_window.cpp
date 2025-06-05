@@ -180,4 +180,23 @@ namespace Robin
 		return m_data.vsync;
 	}
 
+	void windows_window::set_cursor_visibility(bool enabled)
+	{
+		if (enabled)
+		{
+			glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		}
+		else
+		{
+			glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+			glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		}
+	}
+	bool windows_window::get_cursor_visibility()
+	{
+		if (glfwGetInputMode(m_window, GLFW_CURSOR) == GLFW_CURSOR_NORMAL)
+			return true;
+		else
+			return false; 
+	}
 }

@@ -28,6 +28,8 @@ namespace Robin
 
 		inline static application& get() { return *s_instance; }
 		inline window& get_window() { return *m_window; }
+
+		void close();
 	private:
 		bool on_window_close(window_close_event& e);
 	private:

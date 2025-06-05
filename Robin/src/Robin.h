@@ -5,6 +5,7 @@
 #include "Robin/application.h"
 #include "Robin/layer.h"
 #include "Robin/log.h"
+#include "Robin/core.h"
 
 #include "Robin/core/timestep.h"
 

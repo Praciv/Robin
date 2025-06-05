@@ -67,8 +67,7 @@ namespace Robin
 
 	void imgui_layer::on_imgui_render()
 	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+
 	}
 
 	void imgui_layer::begin()
