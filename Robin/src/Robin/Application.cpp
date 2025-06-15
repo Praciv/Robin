@@ -65,7 +65,7 @@ namespace Robin
 	{
 		while (m_running)
 		{
-			float time = glfwGetTime();
+			float time = (float)glfwGetTime();
 			timestep timestep = time - m_last_frame_time;
 			m_last_frame_time = time;
 

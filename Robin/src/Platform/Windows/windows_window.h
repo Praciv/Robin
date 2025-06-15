@@ -25,7 +25,6 @@ namespace Robin
 		void set_cursor_visibility(bool enabled) override;
 		bool get_cursor_visibility() override;
 
-
 		inline virtual void* get_native_window() const { return m_window; }
 	private:
 		virtual void init(const window_props& props);

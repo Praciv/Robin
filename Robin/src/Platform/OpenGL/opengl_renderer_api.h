@@ -8,6 +8,8 @@ namespace Robin
 	{
 		void init() override;
 
+		void set_viewport(int x, int y, int width, int height) override;
+
 		void set_clear_colour(const glm::vec4& colour) override;
 		void clear() override;
 

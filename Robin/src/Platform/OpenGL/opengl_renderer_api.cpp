@@ -14,6 +14,11 @@ namespace Robin
 		glEnable(GL_DEPTH_TEST);
 	}
 
+	void opengl_renderer_api::set_viewport(int x, int y, int width, int height)
+	{
+		glViewport(x, y, width, height);
+	}
+
 	void opengl_renderer_api::set_clear_colour(const glm::vec4& colour)
 	{
 		glClearColor(colour.r, colour.g, colour.b, colour.a);

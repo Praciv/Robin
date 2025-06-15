@@ -1,12 +1,25 @@
 #include "rbpch.h"
 #include "opengl_texture.h"
 
+#include "Robin/application.h"
+
 #include <stb_image.h>
 
 #include <glad/glad.h>
 
 namespace Robin
 {
+	opengl_texture_2D::opengl_texture_2D()
+	{
+		glGenTextures(1, &m_renderer_id);
+		glBindTexture(GL_TEXTURE_2D, m_renderer_id);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, application::get().get_window().get_width(), application::get().get_window().get_height(),
+			GL_RGB, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	}
+
 	opengl_texture_2D::opengl_texture_2D(const std::string& path)
 		:	m_path(path)
 	{

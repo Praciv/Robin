@@ -12,6 +12,12 @@ namespace Robin
 			s_renderer_api->init();
 		}
 
+		inline static void set_viewport(int x, int y, int width, int height)
+		{
+			s_renderer_api->set_viewport(x, y, width, height);
+		}
+
+
 		inline static void set_clear_colour(const glm::vec4& colour)
 		{
 			s_renderer_api->set_clear_colour(colour);

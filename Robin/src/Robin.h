@@ -7,6 +7,8 @@
 #include "Robin/log.h"
 #include "Robin/core.h"
 
+#include "Robin/camera_controller.h"
+
 #include "Robin/core/timestep.h"
 
 #include "Robin/input.h"
@@ -23,11 +25,6 @@
 #include "Robin/Renderer/shader.h"
 #include "Robin/Renderer/vertex_array.h"
 #include "Robin/Renderer/texture.h"
+#include "Robin/Renderer/framebuffer.h"
 
-
-#include "Robin/Renderer/camera.h"
-// ---------------------------------------
-
-// ------Entry point----------------------
-#include "Robin/entry_point.h"
 // ---------------------------------------

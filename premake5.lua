@@ -153,3 +153,58 @@ project "Sandbox"
 		optimize "On" 
 		runtime "Release"
 		buildoptions "/utf-8"
+
+project "Robin-Editor"
+	location "Robin-Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files 
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Robin/vendor/spdlog/include",
+		"Robin/src",
+		"%{IncludeDir.glm}",
+		"Robin/vendor"
+	}
+
+	links
+	{
+		"Robin"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+		defines 
+		{
+			"RB_PLATFORM_WINDOWS",
+		}
+
+	filter "configurations:Debug"
+		defines "RB_DEBUG"
+		symbols "On"
+		runtime "Debug"
+		buildoptions "/utf-8"
+
+	filter "configurations:Release"
+		defines "RB_RELEASE"
+		optimize "On"
+		runtime "Release"
+		buildoptions "/utf-8"
+
+	filter "configurations:Dist"
+		defines "RB_DIST"
+		optimize "On" 
+		runtime "Release"
+		buildoptions "/utf-8"

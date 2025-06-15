@@ -146,8 +146,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Robin\camera_controller.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_context.h" />
+    <ClInclude Include="src\Platform\OpenGL\opengl_framebuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_renderer_api.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_shader.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_texture.h" />
@@ -163,6 +165,7 @@
     <ClInclude Include="src\Robin\ImGui\imgui_layer.h" />
     <ClInclude Include="src\Robin\Renderer\buffer.h" />
     <ClInclude Include="src\Robin\Renderer\camera.h" />
+    <ClInclude Include="src\Robin\Renderer\framebuffer.h" />
     <ClInclude Include="src\Robin\Renderer\graphics_context.h" />
     <ClInclude Include="src\Robin\Renderer\render_command.h" />
     <ClInclude Include="src\Robin\Renderer\renderer.h" />
@@ -602,8 +605,10 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Robin\camera_controller.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_context.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\opengl_framebuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_renderer_api.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_texture.cpp" />
@@ -614,6 +619,7 @@
     <ClCompile Include="src\Robin\ImGui\imgui_layer.cpp" />
     <ClCompile Include="src\Robin\Renderer\buffer.cpp" />
     <ClCompile Include="src\Robin\Renderer\camera.cpp" />
+    <ClCompile Include="src\Robin\Renderer\framebuffer.cpp" />
     <ClCompile Include="src\Robin\Renderer\render_command.cpp" />
     <ClCompile Include="src\Robin\Renderer\renderer.cpp" />
     <ClCompile Include="src\Robin\Renderer\renderer_api.cpp" />

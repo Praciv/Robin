@@ -4,18 +4,20 @@
 
 namespace Robin
 {
-	class othorgraphic_camera
+	class orthorgraphic_camera
 	{
 	public:
-		othorgraphic_camera(float left, float right, float bottom, float top);
+		orthorgraphic_camera(float left, float right, float bottom, float top);
 
-		~othorgraphic_camera();
+		~orthorgraphic_camera();
 
 		const glm::vec3& get_position() const { return m_position; }
 		void set_position(glm::vec3& position) { m_position = position; create_view_matrix(); }
 		
 		const float get_rotation() const { return m_rotation; }
 		void set_rotation(float rotation) { m_rotation = rotation; create_view_matrix(); }
+
+		void set_projection(float left, float right, float bottom, float top);
 
 		const glm::mat4& get_projection_matrix() { return m_projection_matrix; };
 		const glm::mat4& get_view_matrix() { return m_view_matrix; }
@@ -39,6 +41,7 @@ namespace Robin
 		~perspective_camera();
 
 		const glm::vec3& get_position() const { return m_position; }
+		glm::vec3& get_position() { return m_position; }
 		void set_position(glm::vec3& position) { m_position = position; create_view_matrix(); }
 
 		const glm::vec3& get_camera_front() const { return m_front; }
@@ -49,6 +52,14 @@ namespace Robin
 
 		const glm::vec3& get_camera_up() const { return m_up; }
 		void set_camera_up(glm::vec3& up) { m_right = up; create_view_matrix(); }
+
+		const float& get_yaw() const { return m_yaw; }
+		void set_yaw(float yaw) { m_yaw = yaw; create_view_matrix(); }
+
+		const float& get_pitch() const { return m_pitch; }
+		void set_pitch(float pitch) { m_pitch = pitch; create_view_matrix(); }
+
+		void set_projection(float fov, float width, float height, float near_plane, float far_plane);
 
 		const glm::mat4& get_projection_matrix() { return m_projection_matrix; };
 		const glm::mat4& get_view_matrix() { return m_view_matrix; }

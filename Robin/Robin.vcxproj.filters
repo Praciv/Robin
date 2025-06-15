@@ -60,6 +60,9 @@
     <ClInclude Include="src\Platform\OpenGL\opengl_context.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\opengl_framebuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\opengl_renderer_api.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -103,6 +106,9 @@
       <Filter>src\Robin\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Robin\Renderer\camera.h">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Renderer\framebuffer.h">
       <Filter>src\Robin\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Robin\Renderer\graphics_context.h">
@@ -1416,12 +1422,16 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Robin\camera_controller.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\opengl_context.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\opengl_framebuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\opengl_renderer_api.cpp">
@@ -1452,6 +1462,9 @@
       <Filter>src\Robin\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Robin\Renderer\camera.cpp">
+      <Filter>src\Robin\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Renderer\framebuffer.cpp">
       <Filter>src\Robin\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Robin\Renderer\render_command.cpp">
@@ -1490,5 +1503,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Robin\camera_controller.cpp" />
   </ItemGroup>
 </Project>
