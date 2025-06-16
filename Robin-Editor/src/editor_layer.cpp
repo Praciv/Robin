@@ -8,7 +8,7 @@
 namespace Robin
 {
 	editor_layer::editor_layer()
-		: layer("example"), m_camera_controller(45.f, 1280.f, 720.f, -1.f, 1.f), m_colour(1.f), m_position(0.f), m_origin(1.f), m_scale(0.5f), m_rotation(0.f), m_transform(1.f)
+		: layer("example"), m_camera_controller(45.f, 1280.f, 720.f, 0.1f, 100.f), m_colour(1.f), m_position(0.f), m_origin(1.f), m_scale(0.5f), m_rotation(0.f), m_transform(1.f)
 	{
 	}
 
