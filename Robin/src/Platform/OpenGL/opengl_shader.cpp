@@ -102,7 +102,7 @@ namespace Robin
         std::array<GLenum, 2> shader_ids;
         int shade_id_index = 0;
 
-        GLint success;
+        GLint success = 0;
         for (auto& kv : shader_sources)
         {
             GLenum type = kv.first;
@@ -115,7 +115,7 @@ namespace Robin
             glCompileShader(shader);
 
             // print compile errors if any
-            glGetShaderiv(type, GL_COMPILE_STATUS, &success);
+            glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
 
             if (success == GL_FALSE)
             {
@@ -138,7 +138,7 @@ namespace Robin
 
         glLinkProgram(m_renderer_id);
         
-        glGetProgramiv(m_renderer_id, GL_COMPILE_STATUS, &success);
+        glGetProgramiv(m_renderer_id, GL_LINK_STATUS, &success);
 
         if (success == GL_FALSE)
         {

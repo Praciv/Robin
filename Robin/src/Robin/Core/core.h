@@ -19,6 +19,7 @@
 
 #ifdef RB_DEBUG
 	#define RB_ENABLE_ASSERTS
+	#define RB_PROFILING_ENABLED
 #endif
 
 #ifdef RB_ENABLE_ASSERTS
@@ -28,6 +29,15 @@
 	#define RB_ASSERT(x, ...) 
 	#define RB_CORE_ASSERT(x, ...)
 #endif
+
+#ifdef RB_PROFILING_ENABLED
+	#define RB_PROFILE_FUNCTION() timer profiler(__FUNCTION__)
+	#define RB_PROFILE_SCOPE(name) timer profiler(name)
+#else
+	#define RB_PROFILE_FUNCTION()
+	#define RB_PROFILE_SCOPE(name)
+#endif
+
 
 #define BIT(x) (1 << x)
 

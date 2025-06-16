@@ -24,7 +24,7 @@ namespace Robin
 			if (input::is_key_pressed(RB_KEY_Q))
 				m_camera_rotation -= m_camera_rotation_speed * delta_time;
 			else if (input::is_key_pressed(RB_KEY_E))
-				m_camera_rotation == m_camera_rotation_speed * delta_time;
+				m_camera_rotation += m_camera_rotation_speed * delta_time;
 
 			m_camera.set_rotation(m_camera_rotation);
 		}
@@ -123,7 +123,7 @@ namespace Robin
 
 	bool perspective_camera_controller::on_mouse_scrolled(mouse_scrolled_event& e)
 	{
-		m_fov += e.get_y_offset();
+		m_fov -= e.get_y_offset();
 		m_camera.set_projection(m_fov, m_width, m_height, m_near_plane, m_far_plane);
 		return false;
 	}

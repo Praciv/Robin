@@ -102,7 +102,6 @@ namespace Robin
 		m_shader_library.add(shader);
 
 		m_texture = texture_2D::create("assets/textures/first_aid_logo.png");
-		m_transparent_texture = texture_2D::create("assets/textures/transparent.png");
 		m_current_texture = m_texture;
 		shader->bind();
 		shader->set_int("u_texture", 0);
@@ -111,8 +110,6 @@ namespace Robin
 		framebuffer_spec.width = 1280;
 		framebuffer_spec.height = 720;
 		m_framebuffer = framebuffer::create(framebuffer_spec);
-
-		renderer::init();
 	}
 
 	void editor_layer::on_detach()
@@ -218,7 +215,7 @@ namespace Robin
 			ImGui::End();
 		}
 
-		ImGui::Begin("stats");
+		ImGui::Begin("Scene Info");
 		auto camera = m_camera_controller.get_camera();
 
 		ImGui::InputFloat3("Transform", glm::value_ptr(m_position));
@@ -227,6 +224,26 @@ namespace Robin
 		ImGui::SliderFloat("camera z pos", &camera.get_position().z, -5.0f, 5.0f);
 
 		ImGui::End();
+
+		ImGui::Begin("Statistics");
+
+		const auto& samples = timer_manager::get_instance()->get_sample_data();
+
+		float total_frame_time = 0;
+
+		for (auto sample : samples)
+		{
+			if (sample.name == "Robin::application::run")
+			{
+				total_frame_time = sample.duration_ms;
+			}
+		}
+
+		if(total_frame_time != 0)
+			ImGui::Text("Frame Time: %.2f ms (%.1f FPS)", 1000.f / total_frame_time, total_frame_time);
+
+		ImGui::End();
+
 
 		ImGui::Begin("Viewport");
 

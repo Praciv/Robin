@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Robin/core.h"
-#include "Robin/input.h"
+#include "Robin/Core/core.h"
+#include "Robin/Core/input.h"
 
 namespace Robin
 {

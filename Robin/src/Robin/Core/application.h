@@ -3,8 +3,8 @@
 #include "core.h"
 
 #include "window.h"
-#include "Robin/layer_stack.h"
-#include "Events/event.h"
+#include "Robin/Core/layer_stack.h"
+#include "Robin/Events/event.h"
 #include "Robin/Events/application_event.h"
 
 #include "Robin/ImGui/imgui_layer.h"
@@ -32,11 +32,14 @@ namespace Robin
 		void close();
 	private:
 		bool on_window_close(window_close_event& e);
+		bool on_window_resize(window_resize_event& e);
 	private:
 		scope<window> m_window;
 		imgui_layer* m_imgui_layer;
 		bool m_running = true; 
 		layer_stack m_layer_stack; 
+
+		bool m_minimised = false;
 
 		timestep m_last_frame_time; 
 	private:

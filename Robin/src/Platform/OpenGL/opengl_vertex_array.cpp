@@ -63,7 +63,7 @@ namespace Robin
 				shader_data_type_to_opengl_base_type(element.type),
 				element.normalised ? GL_TRUE : GL_FALSE,
 				layout.get_stride(),
-				(const void*)element.offset);
+				(const void*) element.offset);
 			index++;
 		}
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "rbpch.h"
 
-#include "Robin/core.h"
+#include "Robin/Core/core.h"
 
 namespace Robin
 {
@@ -65,7 +65,7 @@ namespace Robin
 		template<typename T> 
 		bool dispatch(event_fn<T> func)
 		{
-			if (m_event.get_event_type() == T::get_static_type())
+			if (!m_event.handled && m_event.get_event_type() == T::get_static_type())
 			{
 				m_event.handled = func(*(T*)&m_event);
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Robin/window.h"
+#include "Robin/Core/window.h"
 #include "Robin/renderer/graphics_context.h"
 
 #include <GLFW/glfw3.h>

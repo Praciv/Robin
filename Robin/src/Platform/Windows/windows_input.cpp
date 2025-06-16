@@ -1,7 +1,7 @@
 #include "rbpch.h"
 #include "windows_input.h"
 
-#include "Robin/application.h"
+#include "Robin/Core/application.h"
 #include <GLFW/glfw3.h>
 
 namespace Robin

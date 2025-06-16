@@ -1,5 +1,5 @@
 #include <Robin.h>
-#include <Robin/entry_point.h>
+#include <Robin/Core/entry_point.h>
 
 #include "editor_layer.h"
 

@@ -2,8 +2,8 @@
 
 #include "rbpch.h"
 
-#include "Robin/core.h"
-#include "Robin/log.h"
+#include "Robin/Core/core.h"
+#include "Robin/Core/log.h"
 #include "Robin/Events/event.h"
 
 namespace Robin

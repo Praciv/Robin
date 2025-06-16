@@ -3,8 +3,8 @@
 #include "Robin/Renderer/camera.h"
 #include "Robin/Core/timestep.h"
 
-#include "Robin/input.h"
-#include "Robin/key_codes.h"
+#include "Robin/Core/input.h"
+#include "Robin/Core/key_codes.h"
 
 #include "Robin/Events/application_event.h"
 #include "Robin/Events/mouse_event.h"

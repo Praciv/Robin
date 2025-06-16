@@ -1,6 +1,6 @@
 #include <Robin.h>
 // ------Entry point----------------------
-#include "Robin/entry_point.h"
+#include "Robin/Core/entry_point.h"
 // ---------------------------------------
 
 #include "sandbox_3D.h"

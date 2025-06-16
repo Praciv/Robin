@@ -1,7 +1,7 @@
 #include "rbpch.h"
 #include "opengl_framebuffer.h"
 
-#include "Robin/application.h"
+#include "Robin/Core/application.h"
 
 #include <glad/glad.h>
 

@@ -1,7 +1,7 @@
 #include "rbpch.h"
 #include "opengl_texture.h"
 
-#include "Robin/application.h"
+#include "Robin/Core/application.h"
 
 #include <stb_image.h>
 
