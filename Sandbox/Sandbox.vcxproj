@@ -137,6 +137,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\sandbox_3D.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\sandbox_3D.cpp" />
     <ClCompile Include="src\sandbox_app.cpp" />
   </ItemGroup>
@@ -144,9 +147,6 @@
     <ProjectReference Include="..\Robin\Robin.vcxproj">
       <Project>{5F66090E-CB7A-31BF-94FC-D41E00D02DF0}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\sandbox_3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

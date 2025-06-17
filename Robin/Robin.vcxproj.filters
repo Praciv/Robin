@@ -4,6 +4,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Debug">
+      <UniqueIdentifier>{63A3C3B2-CF0D-7829-184C-29CF84F5557E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -54,6 +57,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Robin\Debug\timer.h">
+      <Filter>src\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\opengl_buffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -84,7 +90,37 @@
     <ClInclude Include="src\Robin.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Robin\Core\application.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\core.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\entry_point.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\input.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\key_codes.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\layer.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\layer_stack.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\log.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\mouse_button_codes.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Robin\Core\timestep.h">
+      <Filter>src\Robin\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Robin\Core\window.h">
       <Filter>src\Robin\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Robin\Events\application_event.h">
@@ -132,34 +168,7 @@
     <ClInclude Include="src\Robin\Renderer\vertex_array.h">
       <Filter>src\Robin\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Robin\Core\application.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\core.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\entry_point.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\input.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\key_codes.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\layer.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\layer_stack.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\log.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\mouse_button_codes.h">
-      <Filter>src\Robin</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Robin\Core\window.h">
+    <ClInclude Include="src\Robin\camera_controller.h">
       <Filter>src\Robin</Filter>
     </ClInclude>
     <ClInclude Include="src\rbpch.h">
@@ -1422,8 +1431,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Robin\camera_controller.h" />
-    <ClInclude Include="src\Robin\Core\timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp">
@@ -1452,6 +1459,18 @@
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\windows_window.cpp">
       <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Core\application.cpp">
+      <Filter>src\Robin\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Core\layer.cpp">
+      <Filter>src\Robin\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Core\layer_stack.cpp">
+      <Filter>src\Robin\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Robin\Core\log.cpp">
+      <Filter>src\Robin\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Robin\ImGui\imgui_build.cpp">
       <Filter>src\Robin\ImGui</Filter>
@@ -1486,16 +1505,7 @@
     <ClCompile Include="src\Robin\Renderer\vertex_array.cpp">
       <Filter>src\Robin\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Robin\Core\application.cpp">
-      <Filter>src\Robin</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Robin\Core\layer.cpp">
-      <Filter>src\Robin</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Robin\Core\layer_stack.cpp">
-      <Filter>src\Robin</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Robin\Core\log.cpp">
+    <ClCompile Include="src\Robin\camera_controller.cpp">
       <Filter>src\Robin</Filter>
     </ClCompile>
     <ClCompile Include="src\rbpch.cpp">
@@ -1504,7 +1514,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Robin\camera_controller.cpp" />
-    <ClCompile Include="src\Robin\Core\timer.cpp" />
   </ItemGroup>
 </Project>

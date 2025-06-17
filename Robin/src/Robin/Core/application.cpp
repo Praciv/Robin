@@ -82,8 +82,6 @@ namespace Robin
 			}
 
 			m_window->on_update();
-
-			timer_manager::get_instance()->end_frame();
 		}
 	}
 

@@ -119,32 +119,49 @@ namespace Robin
 
 	void editor_layer::on_update(timestep delta_time)
 	{
-		m_camera_controller.on_update(delta_time);
+		RB_PROFILE_FUNCTION();
 
+		{
+			RB_PROFILE_SCOPE("camera_controller::on_update");
+
+			m_camera_controller.on_update(delta_time);
+		}
+		
 		m_framebuffer->bind();
-		render_command::set_viewport(0, 0, 1280, 720);
-		render_command::set_clear_colour({ 0.1f, 0.1f, 0.1f, 1.f });
-		render_command::clear();
+		
+		{
+			RB_PROFILE_SCOPE("Renderer Prep");
+			render_command::set_viewport(0, 0, 1280, 720);
+			render_command::set_clear_colour({ 0.1f, 0.1f, 0.1f, 1.f });
+			render_command::clear();
+		}
 
-		renderer::begin_scene(m_camera_controller);
+		{
+			RB_PROFILE_SCOPE("Renderer Draw Calls");
 
-		auto shader = m_shader_library.get("texture");
+			renderer::begin_scene(m_camera_controller);
 
-		m_current_texture->bind();
-		m_transform = glm::translate(m_origin, m_position);
-		m_transform = glm::rotate(m_transform, glm::radians(m_rotation.x), glm::vec3(1.0f, 0.f, 0.f));
-		m_transform = glm::rotate(m_transform, glm::radians(m_rotation.y), glm::vec3(0.0f, 1.f, 0.f));
-		m_transform = glm::rotate(m_transform, glm::radians(m_rotation.z), glm::vec3(0.0f, 0.f, 1.f));
-		m_transform = glm::scale(m_transform, glm::vec3(m_scale));
+			auto shader = m_shader_library.get("texture");
 
-		renderer::submit(shader, m_vertex_array, m_transform);
+			m_current_texture->bind();
+			m_transform = glm::translate(m_origin, m_position);
+			m_transform = glm::rotate(m_transform, glm::radians(m_rotation.x), glm::vec3(1.0f, 0.f, 0.f));
+			m_transform = glm::rotate(m_transform, glm::radians(m_rotation.y), glm::vec3(0.0f, 1.f, 0.f));
+			m_transform = glm::rotate(m_transform, glm::radians(m_rotation.z), glm::vec3(0.0f, 0.f, 1.f));
+			m_transform = glm::scale(m_transform, glm::vec3(m_scale));
+
+			renderer::submit(shader, m_vertex_array, m_transform);
+
+			renderer::end_scene();
+		}
 		m_framebuffer->unbind();
 
-		renderer::end_scene();
 	}
 
 	void editor_layer::on_imgui_render()
 	{
+		RB_PROFILE_FUNCTION();
+
 		static bool docking_enabled = true;
 
 		if (docking_enabled)
@@ -224,27 +241,7 @@ namespace Robin
 		ImGui::SliderFloat("camera z pos", &camera.get_position().z, -5.0f, 5.0f);
 
 		ImGui::End();
-
-		ImGui::Begin("Statistics");
-
-		const auto& samples = timer_manager::get_instance()->get_sample_data();
-
-		float total_frame_time = 0;
-
-		for (auto sample : samples)
-		{
-			if (sample.name == "Robin::application::run")
-			{
-				total_frame_time = sample.duration_ms;
-			}
-		}
-
-		if(total_frame_time != 0)
-			ImGui::Text("Frame Time: %.2f ms (%.1f FPS)", 1000.f / total_frame_time, total_frame_time);
-
-		ImGui::End();
-
-
+		
 		ImGui::Begin("Viewport");
 
 		auto texture = m_framebuffer->get_colour_attachment_renderer_id();

@@ -31,9 +31,13 @@
 #endif
 
 #ifdef RB_PROFILING_ENABLED
-	#define RB_PROFILE_FUNCTION() timer profiler(__FUNCTION__)
-	#define RB_PROFILE_SCOPE(name) timer profiler(name)
+	#define RB_PROFILE_BEGIN_SESSION(name, file_path) Robin::instrumentor::get().begin_session(name, file_path)
+	#define RB_PROFILE_END_SESSION() Robin::instrumentor::get().end_session();
+	#define RB_PROFILE_SCOPE(name) Robin::instrumentor_timer timer##__LINE__(name)
+	#define RB_PROFILE_FUNCTION() RB_PROFILE_SCOPE(__FUNCSIG__)
 #else
+	#define RB_PROFILE_BEGIN_SESSION(name, file_path) 
+	#define RB_PROFILE_END_SESSION() 
 	#define RB_PROFILE_FUNCTION()
 	#define RB_PROFILE_SCOPE(name)
 #endif

@@ -137,16 +137,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\robin_editor_app.cpp" />
+    <ClInclude Include="src\editor_layer.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\editor_layer.cpp" />
+    <ClCompile Include="src\robin_editor_app.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Robin\Robin.vcxproj">
       <Project>{5F66090E-CB7A-31BF-94FC-D41E00D02DF0}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\editor_layer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

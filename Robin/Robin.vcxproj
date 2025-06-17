@@ -146,7 +146,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Robin\camera_controller.h" />
+    <ClInclude Include="src\Robin\Debug\timer.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_context.h" />
     <ClInclude Include="src\Platform\OpenGL\opengl_framebuffer.h" />
@@ -157,8 +157,17 @@
     <ClInclude Include="src\Platform\Windows\windows_input.h" />
     <ClInclude Include="src\Platform\Windows\windows_window.h" />
     <ClInclude Include="src\Robin.h" />
-    <ClInclude Include="src\Robin\Core\timer.h" />
+    <ClInclude Include="src\Robin\Core\application.h" />
+    <ClInclude Include="src\Robin\Core\core.h" />
+    <ClInclude Include="src\Robin\Core\entry_point.h" />
+    <ClInclude Include="src\Robin\Core\input.h" />
+    <ClInclude Include="src\Robin\Core\key_codes.h" />
+    <ClInclude Include="src\Robin\Core\layer.h" />
+    <ClInclude Include="src\Robin\Core\layer_stack.h" />
+    <ClInclude Include="src\Robin\Core\log.h" />
+    <ClInclude Include="src\Robin\Core\mouse_button_codes.h" />
     <ClInclude Include="src\Robin\Core\timestep.h" />
+    <ClInclude Include="src\Robin\Core\window.h" />
     <ClInclude Include="src\Robin\Events\application_event.h" />
     <ClInclude Include="src\Robin\Events\event.h" />
     <ClInclude Include="src\Robin\Events\key_event.h" />
@@ -174,16 +183,7 @@
     <ClInclude Include="src\Robin\Renderer\shader.h" />
     <ClInclude Include="src\Robin\Renderer\texture.h" />
     <ClInclude Include="src\Robin\Renderer\vertex_array.h" />
-    <ClInclude Include="src\Robin\Core\application.h" />
-    <ClInclude Include="src\Robin\Core\core.h" />
-    <ClInclude Include="src\Robin\Core\entry_point.h" />
-    <ClInclude Include="src\Robin\Core\input.h" />
-    <ClInclude Include="src\Robin\Core\key_codes.h" />
-    <ClInclude Include="src\Robin\Core\layer.h" />
-    <ClInclude Include="src\Robin\Core\layer_stack.h" />
-    <ClInclude Include="src\Robin\Core\log.h" />
-    <ClInclude Include="src\Robin\Core\mouse_button_codes.h" />
-    <ClInclude Include="src\Robin\Core\window.h" />
+    <ClInclude Include="src\Robin\camera_controller.h" />
     <ClInclude Include="src\rbpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -606,7 +606,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Robin\camera_controller.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_buffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_context.cpp" />
     <ClCompile Include="src\Platform\OpenGL\opengl_framebuffer.cpp" />
@@ -616,7 +615,10 @@
     <ClCompile Include="src\Platform\OpenGL\opengl_vertex_array.cpp" />
     <ClCompile Include="src\Platform\Windows\windows_input.cpp" />
     <ClCompile Include="src\Platform\Windows\windows_window.cpp" />
-    <ClCompile Include="src\Robin\Core\timer.cpp" />
+    <ClCompile Include="src\Robin\Core\application.cpp" />
+    <ClCompile Include="src\Robin\Core\layer.cpp" />
+    <ClCompile Include="src\Robin\Core\layer_stack.cpp" />
+    <ClCompile Include="src\Robin\Core\log.cpp" />
     <ClCompile Include="src\Robin\ImGui\imgui_build.cpp" />
     <ClCompile Include="src\Robin\ImGui\imgui_layer.cpp" />
     <ClCompile Include="src\Robin\Renderer\buffer.cpp" />
@@ -628,10 +630,7 @@
     <ClCompile Include="src\Robin\Renderer\shader.cpp" />
     <ClCompile Include="src\Robin\Renderer\texture.cpp" />
     <ClCompile Include="src\Robin\Renderer\vertex_array.cpp" />
-    <ClCompile Include="src\Robin\Core\application.cpp" />
-    <ClCompile Include="src\Robin\Core\layer.cpp" />
-    <ClCompile Include="src\Robin\Core\layer_stack.cpp" />
-    <ClCompile Include="src\Robin\Core\log.cpp" />
+    <ClCompile Include="src\Robin\camera_controller.cpp" />
     <ClCompile Include="src\rbpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
