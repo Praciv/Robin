@@ -30,6 +30,7 @@ namespace Robin
 
 		ref<vertex_array> m_screen_vertex_array;
 		ref<framebuffer> m_framebuffer;
+		glm::vec2 m_viewport_size = { 0, 0 };
 
 		glm::mat4 m_transform;
 		glm::mat4 m_origin;
@@ -37,6 +38,7 @@ namespace Robin
 		glm::vec3 m_position;
 		glm::vec3 m_rotation;
 		glm::vec3 m_colour;
+
 
 		float m_scale;
 

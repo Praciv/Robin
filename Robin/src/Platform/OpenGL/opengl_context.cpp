@@ -14,6 +14,8 @@ namespace Robin
 
 	void opengl_context::init()
 	{
+		RB_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_window_handle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		RB_CORE_ASSERT(status, "Failed to initialise Glad")
@@ -26,6 +28,8 @@ namespace Robin
 
 	void opengl_context::swap_buffers()
 	{
+		RB_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_window_handle);
 	}
 }

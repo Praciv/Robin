@@ -45,6 +45,8 @@ namespace Robin
 		void on_update(timestep delta_time);
 		void on_event(event& e);
 
+		void on_resize(float width, float height);
+
 		perspective_camera& get_camera() { return m_camera; }
 		const perspective_camera& get_camera() const { return m_camera; }
 

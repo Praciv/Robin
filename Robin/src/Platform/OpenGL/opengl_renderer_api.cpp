@@ -8,6 +8,8 @@ namespace Robin
 {
 	void opengl_renderer_api::init()
 	{
+		RB_PROFILE_FUNCTION();
+
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -16,7 +18,7 @@ namespace Robin
 
 	void opengl_renderer_api::set_viewport(int x, int y, int width, int height)
 	{
-		glViewport(x, y, width, height);
+		(x, y, width, height);
 	}
 
 	void opengl_renderer_api::set_clear_colour(const glm::vec4& colour)

@@ -131,7 +131,6 @@ namespace Robin
 		
 		{
 			RB_PROFILE_SCOPE("Renderer Prep");
-			render_command::set_viewport(0, 0, 1280, 720);
 			render_command::set_clear_colour({ 0.1f, 0.1f, 0.1f, 1.f });
 			render_command::clear();
 		}
@@ -241,13 +240,24 @@ namespace Robin
 		ImGui::SliderFloat("camera z pos", &camera.get_position().z, -5.0f, 5.0f);
 
 		ImGui::End();
-		
+
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 		ImGui::Begin("Viewport");
 
-		auto texture = m_framebuffer->get_colour_attachment_renderer_id();
-		ImGui::Image((void*)texture, ImGui::GetContentRegionAvail(), ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+		ImVec2 viewport_panel_size = { ImGui::GetContentRegionAvail().x, ImGui::GetContentRegionAvail().y };
+		glm::vec2 viewport_size = { viewport_panel_size.x, viewport_panel_size.y };
+		if (m_viewport_size != viewport_size)
+		{
+			m_viewport_size = viewport_size;
+			m_framebuffer->resize((uint32_t)m_viewport_size.x, (uint32_t)m_viewport_size.y);
 
+			m_camera_controller.on_resize(m_viewport_size.x, m_viewport_size.y);
+		}
+
+		auto texture = m_framebuffer->get_colour_attachment_renderer_id();
+		ImGui::Image((void*)texture, viewport_panel_size, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 		ImGui::End();
+		ImGui::PopStyleVar();
 	}
 
 	void editor_layer::on_event(event& e)

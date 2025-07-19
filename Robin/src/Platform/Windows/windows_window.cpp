@@ -26,11 +26,15 @@ namespace Robin
 
 	windows_window::windows_window(const window_props& props)
 	{
+		RB_PROFILE_FUNCTION();
+
 		init(props);
 	}
 
 	windows_window::~windows_window()
 	{
+		RB_PROFILE_FUNCTION();
+
 		shutdown();
 	}
 
@@ -161,12 +165,16 @@ namespace Robin
 
 	void windows_window::on_update()
 	{
+		RB_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		m_context->swap_buffers();
 	}
 
 	void windows_window::set_vsync(bool enabled)
 	{
+		RB_PROFILE_FUNCTION();
+
 		if (enabled)
 			glfwSwapInterval(1);
 		else

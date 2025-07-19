@@ -20,6 +20,8 @@ namespace Robin
 		virtual void bind() const = 0;
 		virtual void unbind() const = 0;
 
+		virtual void resize(uint32_t width, uint32_t height) = 0;
+
 		virtual const framebuffer_specification& get_specicication() const = 0;
 
 		virtual const uint32_t get_renderer_id() const = 0;

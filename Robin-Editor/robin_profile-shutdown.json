@@ -1,1 +1,1 @@
-{"otherData": {},"traceEvents":[]}
+{"otherData": {},"traceEvents":[{"cat":"function","dur":69692,"name":"__cdecl Robin::windows_window::~windows_window(void)","ph":"X","pid":0,"ts":88248885601}]}

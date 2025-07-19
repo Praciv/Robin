@@ -103,6 +103,14 @@ namespace Robin
 		dispatcher.dispatch<window_resize_event>(RB_BIND_EVENT_FN(perspective_camera_controller::on_window_resized));
 	}
 
+	void perspective_camera_controller::on_resize(float width, float height)
+	{
+		m_width = width;
+		m_height = height;
+
+		m_camera.set_projection(m_fov, m_width, m_height, m_near_plane, m_far_plane);
+	}
+
 
 	void perspective_camera_controller::process_mouse_movement(float x_offset, float y_offset)
 	{
@@ -129,10 +137,7 @@ namespace Robin
 	}
 	bool perspective_camera_controller::on_window_resized(window_resize_event& e)
 	{
-		m_width = (float)e.get_width();
-		m_height = (float)e.get_height();
-
-		m_camera.set_projection(m_fov, m_width, m_height, m_near_plane, m_far_plane);
+		on_resize((float)e.get_width(), (float)e.get_height());
 		return false;
 	}
 }

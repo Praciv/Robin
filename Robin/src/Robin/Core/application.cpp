@@ -17,6 +17,8 @@ namespace Robin
 	application::application()
 		: m_last_frame_time(0.f)
 	{
+		RB_PROFILE_FUNCTION();
+
 		RB_CORE_ASSERT(!s_instance, "Application already exists")
 			s_instance = this;
 
